@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "main": "index.ts",
   "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
+    "start": "expo start -c",
+    "android": "npx expo prebuild --clean && expo run:android",
+    "ios": "expo prebuild && expo run:ios",
     "web": "expo start --web"
   },
   "dependencies": {
