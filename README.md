@@ -1,0 +1,2 @@
+# Coinbase Clone
+This Project was created for the subject of Mobile Development at IFSP-BRA, the objective is to implement some concepts learned at the classes, all groups got random designs to implement, ours was the Coinbase with major changes to the original one.
