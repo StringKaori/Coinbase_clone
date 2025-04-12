@@ -13,11 +13,14 @@
     "expo-splash-screen": "^0.29.22",
     "expo-status-bar": "~2.0.1",
     "react": "18.3.1",
-    "react-native": "0.76.9"
+    "react-native": "0.76.9",
+    "react-native-svg": "^15.11.2"
   },
   "devDependencies": {
     "@babel/core": "^7.25.2",
     "@types/react": "~18.3.12",
+    "babel-plugin-module-resolver": "^5.0.2",
+    "react-native-svg-transformer": "^1.5.0",
     "typescript": "^5.3.3"
   },
   "private": true

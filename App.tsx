@@ -1,14 +1,15 @@
 import { useCallback, useEffect, useState } from 'react';
-import { Text, View } from 'react-native';
+import { SafeAreaView } from 'react-native';
 import * as SplashScreen from 'expo-splash-screen';
+// import { InitialScreen } from './app/InitialScreen/View/InitialScreen';
 
 export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);
 
   useEffect(() => {
     async function prepare() {
+      SplashScreen.preventAutoHideAsync();
       try {
-        SplashScreen.preventAutoHideAsync();
         await new Promise(resolve => setTimeout(resolve, 2000));
       } catch (e) {
         console.warn(e);
@@ -31,10 +32,10 @@ export default function App() {
   }
 
   return (
-    <View
-      style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}
+    <SafeAreaView 
+      style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
       onLayout={onLayoutRootView}>
-      <Text>SplashScreen Demo! 👋</Text>
-    </View>
+      {/* <InitialScreen /> */}
+    </SafeAreaView>
   );
 }
