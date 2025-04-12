@@ -1,10 +1,14 @@
 import { useCallback, useEffect, useState } from 'react';
-import { SafeAreaView } from 'react-native';
+import { SafeAreaView, StyleSheet } from 'react-native';
 import * as SplashScreen from 'expo-splash-screen';
-// import { InitialScreen } from './app/InitialScreen/View/InitialScreen';
+import { useThemeStore } from './app/theme/useThemeStore';
+import { NavigationContainer } from '@react-navigation/native';
+import { InitialStack } from './app/Routes/Stack/InitialStack/InitialStack';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);
+  const { theme } = useThemeStore();
 
   useEffect(() => {
     async function prepare() {
@@ -32,10 +36,18 @@ export default function App() {
   }
 
   return (
-    <SafeAreaView 
-      style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
-      onLayout={onLayoutRootView}>
-      {/* <InitialScreen /> */}
-    </SafeAreaView>
+    <SafeAreaProvider>
+      <NavigationContainer onReady={onLayoutRootView}>
+        <InitialStack />
+      </NavigationContainer>
+    </SafeAreaProvider>
   );
 }
+
+const styles = StyleSheet.create({
+  mainView: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: `#fff`
+  }
+})
