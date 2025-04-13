@@ -5,6 +5,7 @@ import { SimpleButton } from "../../../common";
 import { useNavigation } from "@react-navigation/native";
 import { InitialStackParamList } from "../../../Routes/Stack/InitialStack/types/InitialStackParamList";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 type InitialScreenNavigationProp = NativeStackNavigationProp<InitialStackParamList>;
 
@@ -14,8 +15,14 @@ const InitialScreen = () => {
   const { theme } = useThemeStore();
   const {width, height} = useWindowDimensions();
 
-  const handlePress = () => {
-    navigation.reset({ index: 0, routes:[{name: "LoginScreen"}] });
+  const handlePress = async () => {
+    try{
+      await AsyncStorage.setItem("isFirstTime", "true");
+    } catch(e) {
+      console.error(e);
+    } finally {
+      navigation.reset({ index: 0, routes:[{name: "LoginScreen"}] });
+    }
   };
 
   return (
