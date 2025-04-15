@@ -1,5 +1,6 @@
 import { TouchableOpacity, Text } from "react-native";
-import { LinearGradient } from "react-native-linear-gradient";
+import { LinearGradient } from "expo-linear-gradient";
+import { useThemeStore } from "../../theme/useThemeStore";
 
 interface SimpleButtonProps {
     content: string;
@@ -8,12 +9,13 @@ interface SimpleButtonProps {
 
 //TODO: styles rever e usar theme
 const SimpleButton = (props: SimpleButtonProps) => {
+  const { theme } = useThemeStore();
   return (
     <TouchableOpacity
       onPress={props.handler}>
       <LinearGradient
-        colors={["#e56aa0", "#b053ab", "#9448b1", "#743ab8"]}
-        locations={[0, 0.44, 0.66, 1]}
+        colors={theme.colors.gradient.colors}
+        locations={theme.colors.gradient.locations}
         start={{ x: 0.5, y: 0 }}
         end={{ x: 0.5, y: 1 }}
         style={{

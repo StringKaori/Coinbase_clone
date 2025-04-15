@@ -5,6 +5,8 @@ export type ThemeType = {
 
 type ThemeColors = {
     background: string,
+    appBarBackground: string,
+    gradient: GradientObject,
     primary: string,
     onPrimary: string,
 }
@@ -16,4 +18,9 @@ type ThemeText = {
 type ThemeTitle = {
     fontSize: number,
     fontWeight: string
+}
+
+type GradientObject = {
+    colors: [string, string, ...string[]],
+    locations: [number, number, ...number[]]
 }

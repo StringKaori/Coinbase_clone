@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from 'react';
-import { SafeAreaView, StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
 import * as SplashScreen from 'expo-splash-screen';
 import { useThemeStore } from './app/theme/useThemeStore';
 import { NavigationContainer } from '@react-navigation/native';
@@ -48,6 +48,6 @@ const styles = StyleSheet.create({
   mainView: {
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: `#fff`
+    backgroundColor: '#fff'
   }
 })
