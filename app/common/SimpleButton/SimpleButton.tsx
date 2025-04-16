@@ -9,7 +9,8 @@ interface SimpleButtonProps {
 
 //TODO: styles rever e usar theme
 const SimpleButton = (props: SimpleButtonProps) => {
-  const { theme } = useThemeStore();
+  const { theme, width } = useThemeStore();
+
   return (
     <TouchableOpacity
       onPress={props.handler}>
@@ -19,13 +20,13 @@ const SimpleButton = (props: SimpleButtonProps) => {
         start={{ x: 0.5, y: 0 }}
         end={{ x: 0.5, y: 1 }}
         style={{
-          width: 193,
+          width: width * 0.47,
           height: 43,
           borderRadius: 8,
           justifyContent: "center",
           alignItems: "center",
         }} >
-        <Text style={{ color: "#fff", fontWeight: "bold", fontSize: 16 }}>
+        <Text style={theme.text.button}>
           {props.content}
         </Text>
       </LinearGradient>

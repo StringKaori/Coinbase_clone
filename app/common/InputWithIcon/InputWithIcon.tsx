@@ -1,53 +1,67 @@
-import { Dispatch, SetStateAction, useEffect } from "react";
-import { View, StyleSheet, TextInput, TouchableOpacity } from "react-native";
+import { Dispatch, SetStateAction } from "react";
+import {
+  KeyboardAvoidingView,
+  TextInput,
+  TouchableOpacity,
+  StyleSheet
+} from "react-native";
 import { SvgProps } from "react-native-svg";
+import { InputWithIconStyles } from "./InputWithIconStyles";
+import { useThemeStore } from "../../theme/useThemeStore";
 
 interface InputWithIconProps {
   value: string | undefined;
   changeValueHandler: Dispatch<SetStateAction<string | undefined>>;
   isPassword?: boolean;
-  shouldShowPassword?: boolean;
-  changeShouldShowPassword?: Dispatch<SetStateAction<boolean | undefined>>;
+  isSecureText?: boolean;
+  setIsSecureText?: Dispatch<SetStateAction<boolean>>;
   placeholder: string;
   IconSVG: React.FC<SvgProps>;
   AlternativeIconSVG?: React.FC<SvgProps>;
 }
 
 const InputWithIcon = (props: InputWithIconProps) => {
-  const IconSVG = props.IconSVG
+  // the point is to imitate flutter ThemeData, 
+  // i know this isn't the best way to do it in react
+  const { theme } = useThemeStore()
+  const styles = InputWithIconStyles;
+
+  const IconSVG = props.IconSVG;
   const AlternativeIconSVG = props.AlternativeIconSVG;
-  const changeShouldShowPassword = props.changeShouldShowPassword
+  const setIsSecureText = props.setIsSecureText;
 
   const handlePasswordButton = () => {
-    if(!AlternativeIconSVG || !changeShouldShowPassword) { return; }
-    return(
-        <TouchableOpacity 
-         style={styles.button}
-         onPress={() => changeShouldShowPassword(!props.shouldShowPassword)}>
-            {props.shouldShowPassword ?
-                <IconSVG style={styles.icon}/> :
-                <AlternativeIconSVG style={styles.icon}/>
-            }
-        </TouchableOpacity>
-    )
-  }
+    if (!AlternativeIconSVG || !setIsSecureText) {
+      return;
+    }
+    return (
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => setIsSecureText(!props.isSecureText)}
+      >
+        {props.isSecureText ? (
+          <IconSVG style={styles.icon} />
+        ) : (
+          <AlternativeIconSVG style={styles.icon} />
+        )}
+      </TouchableOpacity>
+    );
+  };
 
   return (
-    <View style={styles.container}>
+    <KeyboardAvoidingView behavior={"padding"} style={styles.container}>
       <TextInput
-        secureTextEntry={props.shouldShowPassword}
+        secureTextEntry={props.isSecureText}
         value={props.value}
         onChangeText={props.changeValueHandler}
         placeholder={props.placeholder}
-        style={styles.textInput}
+        style={theme.textInputWithIcon}
       />
 
-      {!props.isPassword && <IconSVG style={styles.icon}/>}
+      {!props.isPassword && <IconSVG style={styles.icon} />}
 
-      { props.isPassword &&
-        handlePasswordButton()
-      }
-    </View>
+      {props.isPassword && handlePasswordButton()}
+    </KeyboardAvoidingView>
   );
 };
 
@@ -55,9 +69,10 @@ export { InputWithIcon };
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     padding: 5,
+    position: "relative",
   },
   textInput: {
     width: 285,
@@ -69,13 +84,12 @@ const styles = StyleSheet.create({
     padding: 10,
   },
   icon: {
-    position: 'absolute',
+    position: "absolute",
     right: 20,
-    padding: 10
+    padding: 10,
   },
   button: {
-    position: 'absolute',
-    right: 0,
-    paddingVertical: 10
-  }
+    right: -5,
+    paddingVertical: 10,
+  },
 });

@@ -1,4 +1,8 @@
-import { Text, SafeAreaView, StyleSheet, useWindowDimensions } from "react-native";
+import {
+  Text,
+  SafeAreaView,
+  StyleSheet,
+} from "react-native";
 import IntroSVG from "@assets/Intro_screen_image.svg";
 import { useThemeStore } from "../../../theme/useThemeStore";
 import { SimpleButton } from "../../../common";
@@ -7,74 +11,63 @@ import { InitialStackParamList } from "../../../Routes/Stack/InitialStack/types/
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-type InitialScreenNavigationProp = NativeStackNavigationProp<InitialStackParamList>;
+type InitialScreenNavigationProp =
+  NativeStackNavigationProp<InitialStackParamList>;
 
 const InitialScreen = () => {
-  
-  const navigation = useNavigation<InitialScreenNavigationProp>()
-  const { theme } = useThemeStore();
-  const {width, height} = useWindowDimensions();
+  const navigation = useNavigation<InitialScreenNavigationProp>();
+  const { theme, width, height } = useThemeStore();
+  const styles = getStyles(theme.colors.background);
 
   const handlePress = async () => {
-    try{
+    try {
       await AsyncStorage.setItem("isFirstTime", "true");
-    } catch(e) {
+    } catch (e) {
       console.error(e);
     } finally {
-      navigation.reset({ index: 0, routes:[{name: "LoginScreen"}] });
+      navigation.reset({ index: 0, routes: [{ name: "LoginScreen" }] });
     }
   };
 
   return (
     <SafeAreaView style={[styles.container, { height: height }]}>
-
       <IntroSVG width={250} height={250} />
 
-      <Text style={styles.title}>
+      <Text style={[theme.text.title, { width: width * 0.9 }]}>
         Exchange Bitcoin, Ethereum and gift cards for money
       </Text>
 
-      <Text style={styles.paragraph}>
+      <Text style={[theme.text.tutorialParagraph, { width: width * 0.6 }]}>
         Provide us with the necessary required information and let us do the
         convertion asap!!!
       </Text>
 
-      <Text style={styles.paragraph}>
+      <Text style={[theme.text.tutorialParagraph, { width: width * 0.6 }]}>
         Unlimited type cards on our platform ranging from amazon, iTunes, Google
         Play Store and e.t.c
       </Text>
 
-      <Text style={[styles.paragraph, {paddingBottom: 33}]}>
+      <Text
+        style={[
+          theme.text.tutorialParagraph,
+          { width: width * 0.6, paddingBottom: 33 },
+        ]}>
         Our pay out process is the one of the fatest and guaranteed trusted
       </Text>
 
-      <SimpleButton 
-        content={"CONTINUE"}
-        handler={handlePress}/>
+      <SimpleButton content={"continue"} handler={handlePress} />
     </SafeAreaView>
   );
 };
 
 export { InitialScreen };
 // TODO: use correct fonts and zustand Theme
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#fff",
-  },
-  title: {
-    color: "#9046B2",
-    fontSize: 24,
-    fontWeight: "bold",
-    width: 320,
-    textAlign: "center",
-  },
-  paragraph: {
-    fontSize: 15,
-    width: 300,
-    textAlign: "center",
-    paddingVertical: 5,
-  },
-});
+const getStyles = (backgroundColor: string) =>
+  StyleSheet.create({
+    container: {
+      flex: 1,
+      justifyContent: "center",
+      alignItems: "center",
+      backgroundColor: backgroundColor,
+    },
+  });

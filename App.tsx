@@ -1,19 +1,22 @@
 import { useCallback, useEffect, useState } from 'react';
-import { StyleSheet } from 'react-native';
 import * as SplashScreen from 'expo-splash-screen';
-import { useThemeStore } from './app/theme/useThemeStore';
 import { NavigationContainer } from '@react-navigation/native';
 import { InitialStack } from './app/Routes/Stack/InitialStack/InitialStack';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { useWindowDimensions } from 'react-native';
+import { useThemeStore } from './app/theme/useThemeStore';
 
 export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);
-  const { theme } = useThemeStore();
+  const { setWidth, setHeight } = useThemeStore();
+  const { width, height } = useWindowDimensions();
 
   useEffect(() => {
     async function prepare() {
       SplashScreen.preventAutoHideAsync();
       try {
+        setWidth(width);
+        setHeight(height);
         await new Promise(resolve => setTimeout(resolve, 2000));
       } catch (e) {
         console.warn(e);
@@ -43,11 +46,3 @@ export default function App() {
     </SafeAreaProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  mainView: {
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#fff'
-  }
-})
