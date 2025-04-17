@@ -1,0 +1,1 @@
+export { InitialScreen } from './View/InitialScreen';

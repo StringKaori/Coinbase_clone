@@ -17,8 +17,8 @@ const SimpleButton = (props: SimpleButtonProps) => {
       <LinearGradient
         colors={theme.colors.gradient.colors}
         locations={theme.colors.gradient.locations}
-        start={{ x: 0.5, y: 0 }}
-        end={{ x: 0.5, y: 1 }}
+        start={theme.colors.gradient.start}
+        end={theme.colors.gradient.end}
         style={{
           width: width * 0.47,
           height: 43,

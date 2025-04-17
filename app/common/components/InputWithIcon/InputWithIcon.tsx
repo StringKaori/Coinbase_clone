@@ -3,7 +3,6 @@ import {
   KeyboardAvoidingView,
   TextInput,
   TouchableOpacity,
-  StyleSheet
 } from "react-native";
 import { SvgProps } from "react-native-svg";
 import { InputWithIconStyles } from "./InputWithIconStyles";

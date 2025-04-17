@@ -1,3 +1,4 @@
+import { LinearGradientPoint } from "expo-linear-gradient"
 import { StyleProp, TextStyle } from "react-native"
 import { TextInput } from "react-native-gesture-handler"
 
@@ -23,7 +24,9 @@ type ThemeText = {
 
 type GradientObject = {
     colors: [string, string, ...string[]],
-    locations: [number, number, ...number[]]
+    locations: [number, number, ...number[]],
+    start: LinearGradientPoint | null | undefined,
+    end: LinearGradientPoint | null | undefined
 }
 
 type TextInputWithIconType = {

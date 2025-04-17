@@ -6,7 +6,9 @@ export const lightTheme: ThemeType = {
     appBarBackground: '#f8f8f8',
     gradient: {
       colors: ["#e56aa0", "#b053ab", "#9448b1", "#743ab8"],
-      locations: [0, 0.44, 0.66, 1]
+      locations: [0, 0.44, 0.66, 1],
+      start: { x: 0.5, y: 0 },
+      end: { x: 0.5, y: 1 }
     },
     primary: '#6200ee',
     secondary: '#FFFBF7'

@@ -2,36 +2,41 @@ import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useThemeStore } from "@themes/useThemeStore";
+import BackIconSVG from '@assets/BackIcon.svg'
+import { GradientText } from "../GradientText/GradientText";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 interface CustomHeaderProps {
   showLeftIcon?: boolean
   showRightIcon?: boolean
-  title?: string
+  helperText?: string
+  navigation: NativeStackNavigationProp<any>;
 }
 
 const CustomHeader = (props: CustomHeaderProps) => {
-  let asd = "<-";
-  let asdd = "->";
-
+  const navigation = props.navigation
   const { theme } = useThemeStore()
-  const styles = getStyles(theme.colors.appBarBackground)
+  const styles = getStyles(theme.colors.appBarBackground, theme.colors.primary)
 
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.headerContainer}>
         {props.showLeftIcon &&
-          <TouchableOpacity onPress={() => {}}>
-            <Text style={styles.headerTitle}>{asd}</Text>
-            </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.backButton}
+            onPress={() => {navigation.goBack()}}>
+            <BackIconSVG />
+            <GradientText 
+              text="Back"
+              style={{fontSize: 15, padding: 6, fontWeight: 'bold'}}/>
+          </TouchableOpacity>
         }
-
-        {props.title && <Text style={styles.headerTitle}>{props.title}</Text>}
 
         {props.showRightIcon && <SafeAreaView style={{flex:1}}/>}
 
         {props.showRightIcon && 
           <TouchableOpacity onPress={() => {}}>
-            <Text style={styles.headerTitle}>{asdd}</Text>
+            <Text>right</Text>
           </TouchableOpacity>
         }
       </View>
@@ -39,7 +44,7 @@ const CustomHeader = (props: CustomHeaderProps) => {
   );
 };
 
-const getStyles = (backgroundColor: string) => StyleSheet.create({
+const getStyles = (backgroundColor: string, primaryColor: string) => StyleSheet.create({
   safeArea: {
     backgroundColor: backgroundColor,
   },
@@ -49,13 +54,10 @@ const getStyles = (backgroundColor: string) => StyleSheet.create({
     alignItems: "center",
     paddingHorizontal: 10,
   },
-  headerTitle: {
-    color: "black",
-    fontSize: 20,
-    fontWeight: "bold",
-    textAlign: "center",
-    padding: 5,
-  },
+  backButton: {
+    flexDirection: 'row',
+    alignItems: 'center'
+  }
 });
 
 export { CustomHeader };

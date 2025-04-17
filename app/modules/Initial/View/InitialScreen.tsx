@@ -5,7 +5,7 @@ import {
 } from "react-native";
 import IntroSVG from "@assets/Intro_screen_image.svg";
 import { useThemeStore } from "@themes/useThemeStore";
-import { SimpleButton } from "@common/components";
+import { GradientText, SimpleButton } from "@common/components";
 import { useNavigation } from "@react-navigation/native";
 import { InitialStackParamList } from "@routes/Stack/InitialStack/types/InitialStackParamList";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
@@ -33,9 +33,10 @@ const InitialScreen = () => {
     <SafeAreaView style={[styles.container, { height: height }]}>
       <IntroSVG width={250} height={250} />
 
-      <Text style={[theme.text.title, { width: width * 0.9 }]}>
-        Exchange Bitcoin, Ethereum and gift cards for money
-      </Text>
+      <GradientText
+        text="Exchange Bitcoin, Ethereum and gift cards for money"
+        style={[theme.text.title, { width: width * 0.9 }]}
+      />
 
       <Text style={[theme.text.tutorialParagraph, { width: width * 0.6 }]}>
         Provide us with the necessary required information and let us do the

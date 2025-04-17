@@ -3,7 +3,6 @@ import {
   StyleSheet,
   Text,
   TouchableOpacity,
-  useWindowDimensions,
 } from "react-native";
 import LoginSilhouetteSVG from "@assets/LoginSilhouette.svg";
 import { useState } from "react";
@@ -13,12 +12,19 @@ import LockedLockSVG from "@assets/LockedLock.svg";
 import UnlockedLockSVG from "@assets/UnlockedLock.svg";
 import { useThemeStore } from "@themes/useThemeStore";
 import { LinearGradient } from "expo-linear-gradient";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { InitialStackParamList } from "@routes/Stack/InitialStack/types/InitialStackParamList";
+import { useNavigation } from "@react-navigation/native";
+
+type LoginScreenNavigationProp =
+  NativeStackNavigationProp<InitialStackParamList>;
 
 const LoginScreen = () => {
   const [email, setEmail] = useState<string>();
   const [password, setPassword] = useState<string>();
   const [isSecureText, setIsSecureText] = useState<boolean>(true);
 
+  const navigation = useNavigation<LoginScreenNavigationProp>();
   const { theme, width, height } = useThemeStore();
   const styles = getStyles(width, theme.colors.background, theme.colors.secondary);
 
@@ -61,12 +67,14 @@ const LoginScreen = () => {
 
       <Text>Login With a social Account</Text>
 
-      <TouchableOpacity style={styles.absoluteButton}>
+      <TouchableOpacity 
+        style={styles.absoluteButton}
+        onPress={() => navigation.navigate('RegisterScreen')}>
         <LinearGradient
           colors={theme.colors.gradient.colors}
           locations={theme.colors.gradient.locations}
-          start={{ x: 0.5, y: 0 }}
-          end={{ x: 0.5, y: 1 }}
+          start={theme.colors.gradient.start}
+          end={theme.colors.gradient.end}
           style={{
             width: width,
             height: 43,
