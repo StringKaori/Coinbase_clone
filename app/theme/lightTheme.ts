@@ -9,7 +9,7 @@ export const lightTheme: ThemeType = {
       locations: [0, 0.44, 0.66, 1]
     },
     primary: '#6200ee',
-    onPrimary: '#000',
+    secondary: '#FFFBF7'
   },
   text: {
     title: {

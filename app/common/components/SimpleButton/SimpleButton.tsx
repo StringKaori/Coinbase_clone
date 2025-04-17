@@ -1,6 +1,6 @@
 import { TouchableOpacity, Text } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import { useThemeStore } from "../../theme/useThemeStore";
+import { useThemeStore } from "@themes/useThemeStore";
 
 interface SimpleButtonProps {
     content: string;

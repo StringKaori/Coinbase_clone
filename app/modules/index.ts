@@ -1,2 +1,2 @@
-export { InitialScreen } from './InitialScreen/View/InitialScreen';
-export { LoginScreen } from './LoginScreen/View/LoginScreen';
+export { InitialScreen } from './Initial/View/InitialScreen';
+export { LoginScreen } from './Login/View/LoginScreen';

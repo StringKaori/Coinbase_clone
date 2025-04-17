@@ -7,6 +7,7 @@ export const InputWithIconStyles  = StyleSheet.create ({
     alignItems: "center",
     padding: 5,
     position: "relative",
+    marginBottom: 18,
   },
   icon: {
     position: "absolute",

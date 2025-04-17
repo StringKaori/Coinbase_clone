@@ -4,10 +4,10 @@ import {
   StyleSheet,
 } from "react-native";
 import IntroSVG from "@assets/Intro_screen_image.svg";
-import { useThemeStore } from "../../../theme/useThemeStore";
-import { SimpleButton } from "../../../common";
+import { useThemeStore } from "@themes/useThemeStore";
+import { SimpleButton } from "@common/components";
 import { useNavigation } from "@react-navigation/native";
-import { InitialStackParamList } from "../../../Routes/Stack/InitialStack/types/InitialStackParamList";
+import { InitialStackParamList } from "@routes/Stack/InitialStack/types/InitialStackParamList";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 

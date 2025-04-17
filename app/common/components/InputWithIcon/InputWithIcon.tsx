@@ -7,7 +7,7 @@ import {
 } from "react-native";
 import { SvgProps } from "react-native-svg";
 import { InputWithIconStyles } from "./InputWithIconStyles";
-import { useThemeStore } from "../../theme/useThemeStore";
+import { useThemeStore } from "@themes/useThemeStore";
 
 interface InputWithIconProps {
   value: string | undefined;
@@ -66,30 +66,3 @@ const InputWithIcon = (props: InputWithIconProps) => {
 };
 
 export { InputWithIcon };
-
-const styles = StyleSheet.create({
-  container: {
-    flexDirection: "row",
-    alignItems: "center",
-    padding: 5,
-    position: "relative",
-  },
-  textInput: {
-    width: 285,
-    height: 43,
-
-    borderWidth: 1,
-    borderColor: "black",
-    borderRadius: 8,
-    padding: 10,
-  },
-  icon: {
-    position: "absolute",
-    right: 20,
-    padding: 10,
-  },
-  button: {
-    right: -5,
-    paddingVertical: 10,
-  },
-});

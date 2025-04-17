@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import * as SplashScreen from 'expo-splash-screen';
 import { NavigationContainer } from '@react-navigation/native';
-import { InitialStack } from './app/Routes/Stack/InitialStack/InitialStack';
+import { InitialStack } from './app/routes/Stack/InitialStack/InitialStack';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { useWindowDimensions } from 'react-native';
 import { useThemeStore } from './app/theme/useThemeStore';

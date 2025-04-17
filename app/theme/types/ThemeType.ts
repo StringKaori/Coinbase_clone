@@ -12,7 +12,7 @@ type ThemeColors = {
     appBarBackground: string,
     gradient: GradientObject,
     primary: string,
-    onPrimary: string,
+    secondary: string,
 }
 
 type ThemeText = {
