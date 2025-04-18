@@ -5,6 +5,7 @@ import { useThemeStore } from "@themes/useThemeStore";
 import BackIconSVG from '@assets/BackIcon.svg'
 import { GradientText } from "../GradientText/GradientText";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { LinearGradient } from "expo-linear-gradient";
 
 interface CustomHeaderProps {
   showLeftIcon?: boolean
@@ -40,6 +41,10 @@ const CustomHeader = (props: CustomHeaderProps) => {
           </TouchableOpacity>
         }
       </View>
+      <LinearGradient
+    colors={['rgba(0,0,0,0.1)', 'transparent']}
+    style={styles.smokyBottomBorder}
+  />
     </SafeAreaView>
   );
 };
@@ -57,7 +62,14 @@ const getStyles = (backgroundColor: string, primaryColor: string) => StyleSheet.
   backButton: {
     flexDirection: 'row',
     alignItems: 'center'
-  }
+  },
+  smokyBottomBorder: {
+    position: 'absolute',
+    bottom: 0,
+    left: 0,
+    right: 0,
+    height: 3,
+  },
 });
 
 export { CustomHeader };

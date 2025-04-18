@@ -8,7 +8,7 @@ import UnlockedLockSVG from "@assets/UnlockedLock.svg";
 import SillhoueteSVG from "@assets/Silhouette.svg";
 
 import { useThemeStore } from "@themes/useThemeStore";
-import { InputWithIcon, SimpleButton } from "@common/components";
+import { InputWithIcon, SimpleButton, SocialLoginView } from "@common/components";
 
 import * as Progress from "react-native-progress";
 import { RegisterViewModel } from "../types/RegisterViewModel";
@@ -23,7 +23,7 @@ const RegisterScreen = () => {
   return (
     <SafeAreaView style={[styles.container, { width: width }]}>
       <LoginSilhouetteSVG />
-      <Text>
+      <Text style={styles.iconSubtitle}>
         Inovation distinguishes between a leader and a follower
       </Text>
       <InputWithIcon
@@ -95,6 +95,11 @@ const RegisterScreen = () => {
         content={"signup"} 
         handler={viewModel.registrationHandler} />
 
+      <Text style={styles.or}>or</Text>
+      <Text style={styles.signupSocialLogin}>Signup with a social login</Text>
+      
+      <SocialLoginView/>
+
       <CustomModal 
         visible={viewModel.isModalVisible}
         onClose={viewModel.onClose} 
@@ -111,6 +116,12 @@ const useStyles = (backgroundColor: string) =>
       alignItems: "center",
       backgroundColor: backgroundColor,
     },
+    iconSubtitle: {
+      width: 300,
+      textAlign: 'center',
+      paddingTop: 26,
+      paddingBottom: 20
+    },
     passwordStrength: {
       flexDirection: "row",
       justifyContent: "space-between",
@@ -119,6 +130,18 @@ const useStyles = (backgroundColor: string) =>
     },
     passwordStrengthText: {
       paddingTop: 10
+    },
+    or: {
+      fontSize: 18,
+      color: '#333333',
+      fontWeight: 'bold',
+      paddingTop: 25,
+      paddingBottom: 20
+    },
+    signupSocialLogin: {
+      fontSize: 18,
+      color: '#333333',
+      paddingBottom: 23
     }
   });
 

@@ -4,12 +4,11 @@ import { RegisterViewModel } from "../types/RegisterViewModel";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { InitialStackParamList } from "@routes/Stack/InitialStack/types/InitialStackParamList";
 import { useNavigation } from "@react-navigation/native";
-
-type LoginScreenNavigationProp = NativeStackNavigationProp<InitialStackParamList>;
+import { ValidateEmail } from "@common/helpers/ValidateEmail";
 
 const useRegisterViewModel = (): RegisterViewModel => {
 
-    const navigation = useNavigation<LoginScreenNavigationProp>();
+    const navigation = useNavigation<NativeStackNavigationProp<InitialStackParamList>>();
     // MARK: - States
     const [name, setName] = useState<string>();
 
@@ -50,7 +49,7 @@ const useRegisterViewModel = (): RegisterViewModel => {
             return;
         }
 
-        if(!isValidEmail(email)) {
+        if(!ValidateEmail(email)) {
             setInvalidEmail(true)
         }
         
@@ -63,12 +62,6 @@ const useRegisterViewModel = (): RegisterViewModel => {
         setIsModalVisible(false)
         navigation.goBack()
     }
-
-    // MARK: - helpers:
-    const isValidEmail = (email: string): boolean => {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return emailRegex.test(email);
-    };
 
     return {
         name,

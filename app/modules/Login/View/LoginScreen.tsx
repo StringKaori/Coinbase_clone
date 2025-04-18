@@ -1,12 +1,11 @@
-import {
-  SafeAreaView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-} from "react-native";
+import { SafeAreaView, StyleSheet, Text, TouchableOpacity } from "react-native";
 import LoginSilhouetteSVG from "@assets/LoginSilhouette.svg";
 import { useState } from "react";
-import { InputWithIcon, SimpleButton } from "@common/components";
+import {
+  InputWithIcon,
+  SimpleButton,
+  SocialLoginView,
+} from "@common/components";
 import EmailIconSVG from "@assets/EmailIcon.svg";
 import LockedLockSVG from "@assets/LockedLock.svg";
 import UnlockedLockSVG from "@assets/UnlockedLock.svg";
@@ -15,10 +14,11 @@ import { LinearGradient } from "expo-linear-gradient";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { InitialStackParamList } from "@routes/Stack/InitialStack/types/InitialStackParamList";
 import { useNavigation } from "@react-navigation/native";
+import { LoginScreenStyles } from "./LoginScreenStyles";
 
 type LoginScreenNavigationProp =
   NativeStackNavigationProp<InitialStackParamList>;
-
+// TODO: refactor to use viewmodel pattern
 const LoginScreen = () => {
   const [email, setEmail] = useState<string>();
   const [password, setPassword] = useState<string>();
@@ -26,7 +26,11 @@ const LoginScreen = () => {
 
   const navigation = useNavigation<LoginScreenNavigationProp>();
   const { theme, width, height } = useThemeStore();
-  const styles = getStyles(width, theme.colors.background, theme.colors.secondary);
+  const styles = LoginScreenStyles(
+    width,
+    theme.colors.background,
+    theme.colors.secondary
+  );
 
   return (
     <SafeAreaView style={[styles.container, { height: height }]}>
@@ -54,7 +58,9 @@ const LoginScreen = () => {
         AlternativeIconSVG={UnlockedLockSVG}
       />
 
-      <TouchableOpacity style={styles.forgetPasswordButton}>
+      <TouchableOpacity 
+        style={styles.forgetPasswordButton}
+        onPress={() => navigation.navigate('ForgetPasswordScreen')}>
         <Text>Forget your pasword?</Text>
       </TouchableOpacity>
 
@@ -65,11 +71,13 @@ const LoginScreen = () => {
         }}
       />
 
-      <Text>Login With a social Account</Text>
+      <Text style={styles.socialLoginTitle}>Login with a social account</Text>
+      <SocialLoginView/>
 
-      <TouchableOpacity 
+      <TouchableOpacity
         style={styles.absoluteButton}
-        onPress={() => navigation.navigate('RegisterScreen')}>
+        onPress={() => navigation.navigate("RegisterScreen")}
+      >
         <LinearGradient
           colors={theme.colors.gradient.colors}
           locations={theme.colors.gradient.locations}
@@ -80,10 +88,11 @@ const LoginScreen = () => {
             height: 43,
             justifyContent: "center",
             alignItems: "center",
-          }}>
-            <Text style={styles.absoluteButtonText}>
-              Do not have an Account? Create Account
-            </Text>
+          }}
+        >
+          <Text style={styles.absoluteButtonText}>
+            Do not have an Account? Create Account
+          </Text>
         </LinearGradient>
       </TouchableOpacity>
     </SafeAreaView>
@@ -91,30 +100,3 @@ const LoginScreen = () => {
 };
 
 export { LoginScreen };
-
-const getStyles = (width: number, backgroundColor: string, secondaryColor: string) =>
-  StyleSheet.create({
-    container: {
-      flex: 1,
-      justifyContent: "center",
-      alignItems: "center",
-      backgroundColor: backgroundColor,
-    },
-    paragraph: {
-      paddingVertical: 29,
-      width: width * 0.9,
-      textAlign: "center",
-    },
-    forgetPasswordButton: {
-      marginBottom: 42,
-    },
-    absoluteButton: {
-      position: 'absolute',
-      bottom: 0,
-    },
-    absoluteButtonText: {
-      fontSize: 15,
-      fontWeight: 'bold',
-      color: secondaryColor
-    }
-  });

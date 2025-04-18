@@ -1,9 +1,7 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { InitialStackParamList } from "./types/InitialStackParamList";
 import { CustomHeader } from "@common/components/CustomHeader/CustomHeader";
-import { InitialScreen } from "@modules/Initial";
-import { LoginScreen } from "@modules/Login";
-import { RegisterScreen } from "@modules/Register";
+import { InitialScreen, LoginScreen, RegisterScreen, ForgetPasswordScreen } from "@modules/index";
 
 const Stack = createNativeStackNavigator<InitialStackParamList>();
 
@@ -37,6 +35,11 @@ const InitialStack = () => {
       <Stack.Screen
         name="RegisterScreen"
         component={RegisterScreen}
+      />
+
+      <Stack.Screen
+        name="ForgetPasswordScreen"
+        component={ForgetPasswordScreen}
       />
     </Stack.Navigator>
   );

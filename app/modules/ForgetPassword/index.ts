@@ -1,0 +1,1 @@
+export { ForgetPasswordScreen } from './View/ForgetPasswordScreen'
