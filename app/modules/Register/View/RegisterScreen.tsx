@@ -13,7 +13,7 @@ import { InputWithIcon, SimpleButton } from "@common/components";
 import * as Progress from "react-native-progress";
 import { RegisterViewModel } from "../types/RegisterViewModel";
 import { useRegisterViewModel } from "../ViewModel/useRegisterViewModel";
-import { FlatList } from "react-native-gesture-handler";
+import { CustomModal } from "@common/components/CustomModal/CustomModal";
 
 const RegisterScreen = () => {
   const { theme, width } = useThemeStore();
@@ -94,6 +94,12 @@ const RegisterScreen = () => {
       <SimpleButton 
         content={"signup"} 
         handler={viewModel.registrationHandler} />
+
+      <CustomModal 
+        visible={viewModel.isModalVisible}
+        onClose={viewModel.onClose} 
+        message={"Your registration was successfull, please try to login now."}        
+      />
     </SafeAreaView>
   );
 };

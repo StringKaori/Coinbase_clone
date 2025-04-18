@@ -4,7 +4,6 @@ import { RegisterViewModel } from "../types/RegisterViewModel";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { InitialStackParamList } from "@routes/Stack/InitialStack/types/InitialStackParamList";
 import { useNavigation } from "@react-navigation/native";
-import { Alert } from "react-native";
 
 type LoginScreenNavigationProp = NativeStackNavigationProp<InitialStackParamList>;
 
@@ -24,6 +23,8 @@ const useRegisterViewModel = (): RegisterViewModel => {
 
     const [progress, setProgress] = useState<number>(0);
     const [passwordsMatch, setPasswordsMatch] = useState<boolean>(true);
+
+    const [isModalVisible, setIsModalVisible] = useState<boolean>(false);
 
     // MARK: - Error states
     const [emptyFields, setEmptyFields] = useState<boolean>();
@@ -55,6 +56,12 @@ const useRegisterViewModel = (): RegisterViewModel => {
         
         if(!passwordsMatch) { return; }
 
+        setIsModalVisible(true)
+    }
+
+    const onClose = () => {
+        setIsModalVisible(false)
+        navigation.goBack()
     }
 
     // MARK: - helpers:
@@ -84,7 +91,10 @@ const useRegisterViewModel = (): RegisterViewModel => {
         setEmptyFields,
         invalidEmail,
         setInvalidEmail,
-        registrationHandler
+        isModalVisible,
+        setIsModalVisible,
+        registrationHandler,
+        onClose
     };
 }
 

@@ -29,7 +29,11 @@ interface RegisterViewModel {
     invalidEmail: boolean | undefined,
     setInvalidEmail: BooleanOrUndefinedSetter,
 
-    registrationHandler: () => void
+    isModalVisible: boolean, 
+    setIsModalVisible: BooleanSetter,
+
+    registrationHandler: () => void,
+    onClose: () => void
 }
 
 export { RegisterViewModel }
