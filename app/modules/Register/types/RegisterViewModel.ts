@@ -1,4 +1,4 @@
-import { StringOrUndefinedSetter, BooleanSetter, StringSetter, NumberSetter } from "@common/types/SetStateType"
+import { StringOrUndefinedSetter, BooleanSetter, StringSetter, NumberSetter, BooleanOrUndefinedSetter } from "@common/types/SetStateType"
 
 interface RegisterViewModel {
     name: string | undefined,
@@ -14,14 +14,22 @@ interface RegisterViewModel {
 
     confirmPassword: string | undefined,
     setConfirmPassword: StringOrUndefinedSetter,
-    isConfirmPasswordSecureText: boolean | undefined,
+    isConfirmPasswordSecureText: boolean,
     setIsConfirmPasswordSecureText: BooleanSetter,
 
     progress: number,
     setProgress: NumberSetter,
 
-    passwordsMatch: boolean | undefined,
+    passwordsMatch: boolean,
     setPasswordsMatch: BooleanSetter,
+
+    emptyFields: boolean | undefined,
+    setEmptyFields: BooleanOrUndefinedSetter,
+
+    invalidEmail: boolean | undefined,
+    setInvalidEmail: BooleanOrUndefinedSetter,
+
+    registrationHandler: () => void
 }
 
 export { RegisterViewModel }

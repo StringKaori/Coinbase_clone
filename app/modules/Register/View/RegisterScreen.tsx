@@ -1,4 +1,4 @@
-import { Text, StyleSheet, View } from "react-native";
+import { Text, StyleSheet, View, TouchableOpacity } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import LoginSilhouetteSVG from "@assets/LoginSilhouette.svg";
@@ -8,21 +8,24 @@ import UnlockedLockSVG from "@assets/UnlockedLock.svg";
 import SillhoueteSVG from "@assets/Silhouette.svg";
 
 import { useThemeStore } from "@themes/useThemeStore";
-import { InputWithIcon } from "@common/components";
+import { InputWithIcon, SimpleButton } from "@common/components";
 
 import * as Progress from "react-native-progress";
 import { RegisterViewModel } from "../types/RegisterViewModel";
 import { useRegisterViewModel } from "../ViewModel/useRegisterViewModel";
+import { FlatList } from "react-native-gesture-handler";
 
 const RegisterScreen = () => {
   const { theme, width } = useThemeStore();
   const styles = useStyles(theme.colors.background);
-  const viewModel: RegisterViewModel = useRegisterViewModel()
-
+  const viewModel: RegisterViewModel = useRegisterViewModel();
+  // TODO: revisit this and use height and width right
   return (
     <SafeAreaView style={[styles.container, { width: width }]}>
       <LoginSilhouetteSVG />
-      <Text>Inovation distinguishes between a leader and a follower</Text>
+      <Text>
+        Inovation distinguishes between a leader and a follower
+      </Text>
       <InputWithIcon
         value={viewModel.name}
         changeValueHandler={viewModel.setName}
@@ -59,19 +62,38 @@ const RegisterScreen = () => {
         AlternativeIconSVG={UnlockedLockSVG}
       />
 
-      {!viewModel.passwordsMatch && <Text style={{color: 'red'}}>Passwords don't match</Text>}
+      {!viewModel.passwordsMatch && (
+        <Text style={{ color: "red" }}>Passwords don't match</Text>
+      )}
 
-      <Progress.Bar 
-       progress={viewModel.progress}
-       width={300}
-       color= '#fd749b'
-       unfilledColor="#e2e2e2"
-       borderColor="transparent" />
+      {viewModel.emptyFields && (
+        <Text style={{ color: "red" }}>All fields must be filled</Text>
+      )}
+
+      {viewModel.invalidEmail && (
+        <Text style={{ color: "red" }}>Invalid e-mail</Text>
+      )}
+
+      <Progress.Bar
+        progress={viewModel.progress}
+        width={300}
+        color="#fd749b"
+        unfilledColor="#e2e2e2"
+        borderColor="transparent"
+      />
       <View style={styles.passwordStrength}>
-        <Text>Weak</Text>
-        <Text>Average</Text>
-        <Text>Strong</Text>
+        {["Weak", "Average", "Strong"].map((item) => (
+          <Text 
+            style={styles.passwordStrengthText}
+            key={item}>
+            {item}
+          </Text>
+        ))}
       </View>
+      
+      <SimpleButton 
+        content={"signup"} 
+        handler={viewModel.registrationHandler} />
     </SafeAreaView>
   );
 };
@@ -84,9 +106,13 @@ const useStyles = (backgroundColor: string) =>
       backgroundColor: backgroundColor,
     },
     passwordStrength: {
-        flexDirection: 'row',
-        justifyContent: 'space-between',
-        width: 300
+      flexDirection: "row",
+      justifyContent: "space-between",
+      width: 300,
+      paddingBottom: 41
+    },
+    passwordStrengthText: {
+      paddingTop: 10
     }
   });
 
