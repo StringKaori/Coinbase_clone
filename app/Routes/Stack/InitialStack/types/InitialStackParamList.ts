@@ -3,4 +3,5 @@ export type InitialStackParamList = {
     LoginScreen: undefined;
     RegisterScreen: undefined;
     ForgetPasswordScreen: undefined;
+    BottomTab: undefined;
 }

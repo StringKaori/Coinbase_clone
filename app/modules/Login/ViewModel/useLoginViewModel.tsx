@@ -42,7 +42,7 @@ const useLoginViewModel = (): LoginViewModel => {
       return;
     }
     setInvalidEmail(false);
-    // navigation.navigate()
+    navigation.reset({ index: 0, routes: [{ name: "BottomTab" }] });
   };
 
   return {

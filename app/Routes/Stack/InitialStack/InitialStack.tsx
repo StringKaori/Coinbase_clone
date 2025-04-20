@@ -2,6 +2,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { InitialStackParamList } from "./types/InitialStackParamList";
 import { CustomHeader } from "@common/components/CustomHeader/CustomHeader";
 import { InitialScreen, LoginScreen, RegisterScreen, ForgetPasswordScreen } from "@modules/index";
+import { BottomTab } from "@routes/Tab/BottomTab/BottomTab";
 
 const Stack = createNativeStackNavigator<InitialStackParamList>();
 
@@ -11,7 +12,7 @@ const InitialStack = () => {
     <Stack.Navigator
       initialRouteName={"InitialScreen"}
       screenOptions={({ navigation }) => ({
-        headerShown: true,
+        headerShown: false,
         header: () => (
           <CustomHeader 
             helperText={"back"}
@@ -23,23 +24,28 @@ const InitialStack = () => {
       <Stack.Screen
         name="InitialScreen"
         component={InitialScreen}
-        options={{ headerShown: false }}
       />
 
       <Stack.Screen
         name="LoginScreen"
         component={LoginScreen}
-        options={{ headerShown: false }}
       />
 
       <Stack.Screen
         name="RegisterScreen"
         component={RegisterScreen}
+        options={{ headerShown: true }}
       />
 
       <Stack.Screen
         name="ForgetPasswordScreen"
         component={ForgetPasswordScreen}
+        options={{ headerShown: true }}
+      />
+
+      <Stack.Screen
+        name="BottomTab"
+        component={BottomTab}
       />
     </Stack.Navigator>
   );
