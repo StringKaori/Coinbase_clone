@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { usePasswordStrength } from "./usePasswordStrength";
-import { RegisterViewModel } from "../types/RegisterViewModel";
+import { RegisterViewModel } from "./RegisterViewModel";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { InitialStackParamList } from "@routes/Stack/InitialStack/types/InitialStackParamList";
 import { useNavigation } from "@react-navigation/native";

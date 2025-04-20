@@ -62,7 +62,7 @@ const InitialScreen = () => {
 };
 
 export { InitialScreen };
-// TODO: use correct fonts and zustand Theme
+// TODO: use correct fonts
 const getStyles = (backgroundColor: string) =>
   StyleSheet.create({
     container: {

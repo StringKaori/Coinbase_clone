@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ForgetPasswordViewModel } from "../types/ForgetPasswordViewModel";
+import { ForgetPasswordViewModel } from "./ForgetPasswordViewModel";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { InitialStackParamList } from "@routes/Stack/InitialStack/types/InitialStackParamList";

@@ -7,7 +7,6 @@ interface SimpleButtonProps {
     handler: () => void
 }
 
-//TODO: styles rever e usar theme
 const SimpleButton = (props: SimpleButtonProps) => {
   const { theme, width } = useThemeStore();
 

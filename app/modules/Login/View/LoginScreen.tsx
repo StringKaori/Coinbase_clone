@@ -1,6 +1,5 @@
-import { SafeAreaView, StyleSheet, Text, TouchableOpacity } from "react-native";
+import { SafeAreaView, Text, TouchableOpacity } from "react-native";
 import LoginSilhouetteSVG from "@assets/LoginSilhouette.svg";
-import { useState } from "react";
 import {
   InputWithIcon,
   SimpleButton,
@@ -11,20 +10,12 @@ import LockedLockSVG from "@assets/LockedLock.svg";
 import UnlockedLockSVG from "@assets/UnlockedLock.svg";
 import { useThemeStore } from "@themes/useThemeStore";
 import { LinearGradient } from "expo-linear-gradient";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { InitialStackParamList } from "@routes/Stack/InitialStack/types/InitialStackParamList";
-import { useNavigation } from "@react-navigation/native";
 import { LoginScreenStyles } from "./LoginScreenStyles";
+import { useLoginViewModel } from "../ViewModel/useLoginViewModel";
 
-type LoginScreenNavigationProp =
-  NativeStackNavigationProp<InitialStackParamList>;
-// TODO: refactor to use viewmodel pattern
 const LoginScreen = () => {
-  const [email, setEmail] = useState<string>();
-  const [password, setPassword] = useState<string>();
-  const [isSecureText, setIsSecureText] = useState<boolean>(true);
-
-  const navigation = useNavigation<LoginScreenNavigationProp>();
+  const viewModel = useLoginViewModel()
+  
   const { theme, width, height } = useThemeStore();
   const styles = LoginScreenStyles(
     width,
@@ -41,34 +32,35 @@ const LoginScreen = () => {
       </Text>
 
       <InputWithIcon
-        value={email}
-        changeValueHandler={setEmail}
+        value={viewModel.email}
+        changeValueHandler={viewModel.setEmail}
         placeholder={"Email"}
         IconSVG={EmailIconSVG}
       />
 
       <InputWithIcon
         isPassword
-        value={password}
-        changeValueHandler={setPassword}
-        isSecureText={isSecureText}
-        setIsSecureText={setIsSecureText}
+        value={viewModel.password}
+        changeValueHandler={viewModel.setPassword}
+        isSecureText={viewModel.isSecureText}
+        setIsSecureText={viewModel.setIsSecureText}
         placeholder={"Password"}
         IconSVG={LockedLockSVG}
         AlternativeIconSVG={UnlockedLockSVG}
       />
 
+      {viewModel.emptyFields && <Text style={{ color: "red" }}>All fields must be filled</Text>}
+      {viewModel.invalidEmail && <Text style={{ color: "red" }}>Invalid e-mail format</Text>}
+
       <TouchableOpacity 
         style={styles.forgetPasswordButton}
-        onPress={() => navigation.navigate('ForgetPasswordScreen')}>
+        onPress={viewModel.navigateToForgetPassword}>
         <Text>Forget your pasword?</Text>
       </TouchableOpacity>
 
       <SimpleButton
         content={"login"}
-        handler={() => {
-          console.log("clicou");
-        }}
+        handler={viewModel.handleLoginPress}
       />
 
       <Text style={styles.socialLoginTitle}>Login with a social account</Text>
@@ -76,7 +68,7 @@ const LoginScreen = () => {
 
       <TouchableOpacity
         style={styles.absoluteButton}
-        onPress={() => navigation.navigate("RegisterScreen")}
+        onPress={viewModel.navigateToRegisterScreen}
       >
         <LinearGradient
           colors={theme.colors.gradient.colors}

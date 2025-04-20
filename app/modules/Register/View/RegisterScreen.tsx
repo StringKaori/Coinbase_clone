@@ -11,7 +11,7 @@ import { useThemeStore } from "@themes/useThemeStore";
 import { InputWithIcon, SimpleButton, SocialLoginView } from "@common/components";
 
 import * as Progress from "react-native-progress";
-import { RegisterViewModel } from "../types/RegisterViewModel";
+import { RegisterViewModel } from "../ViewModel/RegisterViewModel";
 import { useRegisterViewModel } from "../ViewModel/useRegisterViewModel";
 import { CustomModal } from "@common/components/CustomModal/CustomModal";
 
@@ -71,7 +71,7 @@ const RegisterScreen = () => {
       )}
 
       {viewModel.invalidEmail && (
-        <Text style={{ color: "red" }}>Invalid e-mail</Text>
+        <Text style={{ color: "red" }}>Invalid e-mail format</Text>
       )}
 
       <Progress.Bar

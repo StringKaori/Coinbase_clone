@@ -29,7 +29,7 @@ const ForgetPasswordScreen = () => {
         IconSVG={EmailIconSvg}
       />
       {viewModel.emptyField && <Text style={{color:'red'}}>Field cannot be empty</Text>}
-      {viewModel.invalidEmail && <Text style={{color:'red'}}>Invalid e-mail</Text>}
+      {viewModel.invalidEmail && <Text style={{color:'red'}}>Invalid e-mail format</Text>}
 
       <Text style={styles.paragraph}>
         How well we communicate is determined not by how well we say things, but
