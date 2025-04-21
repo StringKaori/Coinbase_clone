@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useThemeStore } from "@themes/useThemeStore";
@@ -6,6 +6,7 @@ import BackIconSVG from '@assets/BackIcon.svg'
 import { GradientText } from "../GradientText/GradientText";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { LinearGradient } from "expo-linear-gradient";
+import { useMainHeaderStore } from "global/useMainHeaderStore/useMainHeaderStore";
 
 interface CustomHeaderProps {
   showLeftIcon?: boolean
@@ -15,9 +16,19 @@ interface CustomHeaderProps {
 }
 
 const CustomHeader = (props: CustomHeaderProps) => {
+  const { setIsVisible } = useMainHeaderStore()
   const navigation = props.navigation
   const { theme } = useThemeStore()
   const styles = getStyles(theme.colors.appBarBackground, theme.colors.primary)
+
+  const handleGoBackPress = () => {
+    setIsVisible(true);
+    navigation.goBack()
+  }
+  
+  useEffect(()=> {
+      setIsVisible(false);
+  }, [])
 
   return (
     <SafeAreaView style={styles.safeArea}>
@@ -25,7 +36,7 @@ const CustomHeader = (props: CustomHeaderProps) => {
         {props.showLeftIcon &&
           <TouchableOpacity
             style={styles.backButton}
-            onPress={() => {navigation.goBack()}}>
+            onPress={handleGoBackPress}>
             <BackIconSVG />
             <GradientText 
               text="Back"

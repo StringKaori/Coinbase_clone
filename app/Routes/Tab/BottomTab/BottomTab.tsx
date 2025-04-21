@@ -3,14 +3,18 @@ import { BottomTabParamList } from "./types/BottomTabParamList";
 import HomeSVG from '@assets/HomeIcon.svg';
 import { GradientSVG } from "@common/components";
 import { HomeStack } from "@routes/Stack/HomeStack/HomeStack";
+import { useMainHeaderStore } from "global/useMainHeaderStore/useMainHeaderStore";
 
 const Tab = createBottomTabNavigator<BottomTabParamList>();
 
 const BottomTab = () => {
 
+  const { isVisible } = useMainHeaderStore()
+
   return (
     <Tab.Navigator
       screenOptions={{
+        headerShown: isVisible,
         tabBarShowLabel: false,
         tabBarStyle: {
           elevation: 0,
