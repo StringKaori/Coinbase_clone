@@ -1,0 +1,58 @@
+[
+    {
+        "id": 1,
+        "name": "bitcoin",
+        "type": "crypto",
+        "backgroundGradient": {
+            "colors": ["#FF8000", "#E34141"]
+        }
+    },
+    {
+        "id": 2,
+        "name": "Ethereum",
+        "type": "crypto" ,
+        "backgroundGradient": {
+            "colors": ["#00E0FF", "#0047FF"]
+        }
+    },
+    {
+        "id": 3,
+        "name": "Amazon",
+        "type": "gift" ,
+        "backgroundGradient": {
+            "colors": ["#FD749B", "#281AC8"]
+        }
+    },
+    {
+        "id": 4,
+        "name": "App Store",
+        "type": "gift" ,
+        "backgroundGradient": {
+            "colors": ["#00E0FF", "#0047FF"] 
+        }
+    },
+    {
+        "id": 5,
+        "name": "Steam",
+        "type": "gift",
+        "backgroundGradient": {
+            "colors": ["#FD749B", "#281AC8"]
+        }
+    },
+    {
+        "id": 6,
+        "name": "Google Play",
+        "type": "gift" ,
+        "backgroundGradient": {
+            "colors": ["#99FDD9", "#1E62A1 "]
+        }
+    },
+    {
+        "id": 7,
+        "name": "others ",
+        "type": "gift" ,
+        "backgroundGradient": {
+            "colors": ["#FD749B", "#281AC8"]
+        }
+    }
+]
