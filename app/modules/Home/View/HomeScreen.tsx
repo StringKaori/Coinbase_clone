@@ -7,18 +7,14 @@ import { useHomeViewModel } from "../ViewModel/useHomeViewModel";
 import { useNavigation } from "@react-navigation/native";
 import { HomeStackParamList } from "@routes/Stack/HomeStack/types/HomeStackParamList";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { RenderExchangeMethodSVG } from "@common/helpers/RenderExchangeMethodSVG/RenderExchangeMethodSVG";
 
 const HomeScreen = () => {
   const { theme, width, height } = useThemeStore();
   const styles = createStyles(theme.colors.background);
   const viewModel = useHomeViewModel();
   // MARK: - Navigation handlers
-    const navigation = useNavigation<NativeStackNavigationProp<HomeStackParamList>>();
-
-  const renderSVG = (name: string) => {
-    const SvgComponent = viewModel.imageMock[name];
-    return SvgComponent ? <SvgComponent /> : null;
-  };
+  const navigation = useNavigation<NativeStackNavigationProp<HomeStackParamList>>();
 
   return (
     <SafeAreaView style={[styles.container, { height: height }]}>
@@ -40,7 +36,7 @@ const HomeScreen = () => {
           <TouchableOpacity 
            style={{ paddingBottom: 10 }}
            onPress={() => navigation.navigate('CryptoExchangeScreen', item)}>
-            {renderSVG(item.name)}
+            {RenderExchangeMethodSVG(item.name)}
           </TouchableOpacity>
         )}
       />
