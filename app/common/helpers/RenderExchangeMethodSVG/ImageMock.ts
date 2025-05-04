@@ -14,7 +14,7 @@ const imageMock: Record<string, React.FC<SvgProps>> = {
     "App Store": appstoreSVG,
     "Steam": steamSVG,
     "Google Play": googleplaySVG,
-    "others ": othersSVG
+    "others": othersSVG
 }
 
 export { imageMock };

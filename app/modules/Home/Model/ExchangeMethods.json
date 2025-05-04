@@ -5,6 +5,8 @@
         "title": "Bitcoin Currency",
         "subtitle": "N440.00 is our conversion rate for every 0.1 BTC on this platform.",
         "type": "crypto",
+        "rate": 440.00,
+        "amount": 0.1,
         "backgroundGradient": {
             "colors": ["#FF8000", "#E34141"]
         }
@@ -12,9 +14,11 @@
     {
         "id": 2,
         "name": "Ethereum",
-        "title": "Ethereum ",
+        "title": "Ethereum",
         "subtitle": "N500.00 is our conversion rate for every 0.1 ETH on this platform.",
-        "type": "crypto" ,
+        "type": "crypto",
+        "rate": 500.00,
+        "amount": 0.1,
         "backgroundGradient": {
             "colors": ["#00E0FF", "#0047FF"]
         }
@@ -24,7 +28,9 @@
         "name": "Amazon",
         "title": "Amazon Gift Card",
         "subtitle": "N360.00 is our conversion rate for every Amazon card on this platform.",
-        "type": "gift" ,
+        "type": "gift",
+        "rate": 360.00,
+        "amount": 1,
         "backgroundGradient": {
             "colors": ["#FD749B", "#281AC8"]
         }
@@ -34,17 +40,21 @@
         "name": "App Store",
         "title": "App Store & iTunes Gift Card",
         "subtitle": "N360.00 is our conversion rate for every App Store & iTunes card on this platform.",
-        "type": "gift" ,
+        "type": "gift",
+        "rate": 360.00,
+        "amount":  1,
         "backgroundGradient": {
-            "colors": ["#00E0FF", "#0047FF"] 
+            "colors": ["#00E0FF", "#0047FF"]
         }
     },
     {
         "id": 5,
         "name": "Steam",
         "title": "Steam Gift Card",
-        "subtitle": "N300.00 is our conversion rate for every App Store & iTunes card on this platform.",
+        "subtitle": "N300.00 is our conversion rate for every Steam card on this platform.",
         "type": "gift",
+        "rate": 300.00,
+        "amount":  1,
         "backgroundGradient": {
             "colors": ["#FD749B", "#281AC8"]
         }
@@ -53,18 +63,22 @@
         "id": 6,
         "name": "Google Play",
         "title": "Google Play Gift Card",
-        "subtitle": "N310.00 is our conversion rate for every App Store & iTunes card on this platform.",
-        "type": "gift" ,
+        "subtitle": "N310.00 is our conversion rate for every Google Play card on this platform.",
+        "type": "gift",
+        "rate": 310.00,
+        "amount":  1,
         "backgroundGradient": {
             "colors": ["#99FDD9", "#1E62A1"]
         }
     },
     {
-        "id": 7, 
-        "name": "others ",
+        "id": 7,
+        "name": "others",
         "title": "Other Gift Card",
-        "subtitle": "Conversion rate for every card on this page varies on different types of card brands",
-        "type": "gift" ,
+        "subtitle": "Conversion rate for every card on this page varies on different types of card brands.",
+        "type": "gift",
+        "rate": 300.00,
+        "amount":  1,
         "backgroundGradient": {
             "colors": ["#FD749B", "#281AC8"]
         }

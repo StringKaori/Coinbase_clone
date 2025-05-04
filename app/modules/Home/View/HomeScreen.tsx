@@ -35,7 +35,7 @@ const HomeScreen = () => {
         renderItem={({ item }) => (
           <TouchableOpacity 
            style={{ paddingBottom: 10 }}
-           onPress={() => navigation.navigate('CryptoExchangeScreen', item)}>
+           onPress={() => {navigation.navigate('DefaultExchangeScreen', item)}}>
             {RenderExchangeMethodSVG(item.name)}
           </TouchableOpacity>
         )}

@@ -44,8 +44,8 @@ export default function App() {
     <GestureHandlerRootView style={{ flex:1 }}>
       <SafeAreaProvider>
         <NavigationContainer onReady={onLayoutRootView}>
-          {/* <InitialStack /> */}
-          <BottomTab />
+          <InitialStack />
+           {/* <BottomTab /> */}
         </NavigationContainer>
       </SafeAreaProvider>
     </GestureHandlerRootView>

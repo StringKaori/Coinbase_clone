@@ -1,7 +1,7 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { CustomHeader } from "@common/components/CustomHeader/CustomHeader";
 import { HomeStackParamList } from "./types/HomeStackParamList";
-import { CryptoExchangeScreen, HomeScreen } from "@modules/index";
+import { DefaultExchangeScreen, HomeScreen } from "@modules/index";
 
 const Stack = createNativeStackNavigator<HomeStackParamList>();
 
@@ -27,8 +27,8 @@ const HomeStack = () => {
       />
 
       <Stack.Screen
-        name="CryptoExchangeScreen"
-        component={CryptoExchangeScreen}
+        name="DefaultExchangeScreen"
+        component={DefaultExchangeScreen}
         options={{ headerShown: true }}
       />
     </Stack.Navigator>

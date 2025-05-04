@@ -4,6 +4,8 @@ export type ExchangeMethodType = {
     title: string,
     subtitle: string,
     type: string,
+    rate: number,
+    amount:  number,
     backgroundGradient: {
         colors: readonly [string, string, ...string[]]
     }

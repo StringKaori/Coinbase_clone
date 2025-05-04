@@ -7,9 +7,9 @@ import { RenderExchangeMethodSVG } from "@common/helpers/RenderExchangeMethodSVG
 import { LinearGradient } from "expo-linear-gradient";
 
 type Props = {
-  route: RouteProp<RootStackParamList, "CryptoExchangeScreen">;
+  route: RouteProp<RootStackParamList, "DefaultExchangeScreen">;
 };
-
+//TODO - revisar tipagem dos parametros de rotas
 const CryptoExchangeScreen = ({ route }: Props) => {
   const item = route.params;
   const { theme, width, height } = useThemeStore();

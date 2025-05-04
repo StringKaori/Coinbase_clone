@@ -1,6 +1,5 @@
 import { LinearGradientPoint } from "expo-linear-gradient"
 import { StyleProp, TextStyle } from "react-native"
-import { TextInput } from "react-native-gesture-handler"
 
 export type ThemeType = {
     colors: ThemeColors,
@@ -14,6 +13,7 @@ type ThemeColors = {
     gradient: GradientObject,
     primary: string,
     secondary: string,
+    currencyTitle: string
 }
 
 type ThemeText = {

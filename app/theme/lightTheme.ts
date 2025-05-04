@@ -11,7 +11,8 @@ export const lightTheme: ThemeType = {
       end: { x: 0.5, y: 1 }
     },
     primary: '#6200ee',
-    secondary: '#FFFBF7'
+    secondary: '#FFFBF7',
+    currencyTitle: '#626262'
   },
   text: {
     title: {

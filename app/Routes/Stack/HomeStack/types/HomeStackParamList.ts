@@ -2,6 +2,5 @@ import { ExchangeMethodType } from "@modules/Home/ViewModel/types/ExchangeMethod
 
 export type HomeStackParamList = {
     HomeScreen: undefined;
-    CryptoExchangeScreen: ExchangeMethodType;
-    GiftCardExchangeScreen: undefined;
+    DefaultExchangeScreen: ExchangeMethodType;
 }
