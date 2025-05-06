@@ -23,7 +23,7 @@ const BottomTab = () => {
         },
         headerShown: isVisible,
         header: () => (
-          <CustomTabbarHeader navigation={navigation}/>
+          <CustomTabbarHeader navigation={navigation.getParent()}/>
         ),
       })}
     >

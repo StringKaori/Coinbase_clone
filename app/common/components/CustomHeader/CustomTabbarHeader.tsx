@@ -4,10 +4,10 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import DrawerIconSVG from "@assets/DrawerIcon.svg";
 import ProfileIconSVG from "@assets/ProfileIcon.svg";
 import { LinearGradient } from "expo-linear-gradient";
-import { BottomTabNavigationProp } from "@react-navigation/bottom-tabs";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 interface CustomTabbarHeaderProps {
-  navigation: BottomTabNavigationProp<any>;
+  navigation: NativeStackNavigationProp<any>;
 }
 
 const CustomTabbarHeader = (props: CustomTabbarHeaderProps) => {
@@ -23,7 +23,7 @@ const CustomTabbarHeader = (props: CustomTabbarHeaderProps) => {
 
         <SafeAreaView style={{ flex: 1 }} />
 
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => props.navigation.push("ProfileScreen")}>
           <ProfileIconSVG />
         </TouchableOpacity>
       </View>

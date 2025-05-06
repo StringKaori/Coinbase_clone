@@ -1,6 +1,5 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { CustomHeader } from "@common/components/CustomHeader/CustomHeader";
-import { BottomTab } from "@routes/Tab/BottomTab/BottomTab";
 import { HomeStackParamList } from "./types/HomeStackParamList";
 import { DefaultExchangeScreen, HomeScreen } from "@modules/index";
 
