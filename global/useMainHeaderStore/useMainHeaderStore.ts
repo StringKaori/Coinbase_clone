@@ -1,13 +1,13 @@
 import { create } from 'zustand';
 
 interface MainHeaderState {
-    isVisible: boolean,
-    setIsVisible: (isVisible: boolean) => void
+    isMainHeaderVisible: boolean,
+    setIsMainHeaderVisible: (isMainHeaderVisible: boolean) => void
 }
 
 const useMainHeaderStore = create<MainHeaderState>((set) => ({
-    isVisible: true,
-    setIsVisible: (isVisible: boolean) => {set({isVisible: isVisible})}
+    isMainHeaderVisible: true,
+    setIsMainHeaderVisible: (isMainHeaderVisible: boolean) => {set({isMainHeaderVisible: isMainHeaderVisible})}
 }));
 
 export { useMainHeaderStore };

@@ -1,25 +1,25 @@
 import { GradientText } from "@common/components";
 import { useThemeStore } from "@themes/useThemeStore";
 import { Text, StyleSheet, TouchableOpacity } from "react-native";
-import { FlatList } from "react-native-gesture-handler";
+import { FlatList } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useHomeViewModel } from "../ViewModel/useHomeViewModel";
 import { useNavigation } from "@react-navigation/native";
-import { MainStackParamList } from "@routes/Stack/MainStack/types/MainStackParamList";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RenderExchangeMethodSVG } from "@common/helpers/RenderExchangeMethodSVG/RenderExchangeMethodSVG";
+import { HomeStackParamList } from "@routes/Stack/HomeStack/types/HomeStackParamList";
 
 const HomeScreen = () => {
   const { theme, width, height } = useThemeStore();
   const styles = createStyles(theme.colors.background);
   const viewModel = useHomeViewModel();
   // MARK: - Navigation handlers
-  const navigation = useNavigation<NativeStackNavigationProp<MainStackParamList>>();
+  const navigation = useNavigation<NativeStackNavigationProp<HomeStackParamList>>();
 
   return (
     <SafeAreaView style={[styles.container, { height: height }]}>
       <GradientText
-        text={"Hi, Bossun Jones"}
+        text={`Hi, ${viewModel.username}`}
         style={[theme.text.title, { fontWeight: "regular", textAlign: "left" }]}
       />
       <Text style={{ fontSize: 18 }}>Welcome Back!</Text>

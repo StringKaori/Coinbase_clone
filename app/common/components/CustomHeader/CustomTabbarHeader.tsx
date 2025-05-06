@@ -17,7 +17,7 @@ const CustomTabbarHeader = (props: CustomTabbarHeaderProps) => {
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.headerContainer}>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => props.navigation.navigate("Drawer")}>
           <DrawerIconSVG />
         </TouchableOpacity>
 

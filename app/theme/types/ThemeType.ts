@@ -13,13 +13,16 @@ type ThemeColors = {
     gradient: GradientObject,
     primary: string,
     secondary: string,
-    currencyTitle: string
+    currencyTitle: string,
+    recentTransactionSecondary: string,
+    success: string
 }
 
 type ThemeText = {
     title: StyleProp<TextStyle>
     button: StyleProp<TextStyle>
     tutorialParagraph: StyleProp<TextStyle>
+    profileName: StyleProp<TextStyle>
 }
 
 type GradientObject = {

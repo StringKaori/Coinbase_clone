@@ -12,7 +12,9 @@ export const lightTheme: ThemeType = {
     },
     primary: '#6200ee',
     secondary: '#FFFBF7',
-    currencyTitle: '#626262'
+    currencyTitle: '#626262',
+    recentTransactionSecondary: '#979797',
+    success: '#0FE133'
   },
   text: {
     title: {
@@ -32,6 +34,11 @@ export const lightTheme: ThemeType = {
       textAlign: "center",
       paddingVertical: 5,
     },
+    profileName: {
+      color: '#FFFBF7',
+      fontSize: 26,
+      fontWeight: 'bold'
+    }
   },
   // TODO: remove all hardcoded width and heights
   textInputWithIcon: {

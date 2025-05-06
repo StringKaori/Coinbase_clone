@@ -10,7 +10,7 @@ const Tab = createBottomTabNavigator<BottomTabParamList>();
 
 const BottomTab = () => {
 
-  const { isVisible } = useMainHeaderStore()
+  const { isMainHeaderVisible } = useMainHeaderStore()
 
   return (
     <Tab.Navigator
@@ -21,7 +21,7 @@ const BottomTab = () => {
           borderTopWidth: 1,
           borderTopColor: '#e2e2e2',
         },
-        headerShown: isVisible,
+        headerShown: isMainHeaderVisible,
         header: () => (
           <CustomTabbarHeader navigation={navigation.getParent()}/>
         ),

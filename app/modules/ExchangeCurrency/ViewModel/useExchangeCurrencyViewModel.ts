@@ -4,6 +4,7 @@ import { useAccountTotalStore } from "global/useAccountTotal/useAccountTotal";
 import { MainStackParamList } from "@routes/Stack/MainStack/types/MainStackParamList";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { useNavigation } from "@react-navigation/native";
+import { useMainHeaderStore } from "global/useMainHeaderStore/useMainHeaderStore";
 
 const useExchangeCurrencyViewModel = (): ExchangeCurrencyViewModel => {
     const navigation = useNavigation<NativeStackNavigationProp<MainStackParamList>>();
@@ -19,6 +20,7 @@ const useExchangeCurrencyViewModel = (): ExchangeCurrencyViewModel => {
     const [errorMessage, setErrorMessage] = useState<string>("");
 
     const { accountTotal, setAccountTotal } = useAccountTotalStore();
+    const { setIsMainHeaderVisible } = useMainHeaderStore()
 
     const handleGift = () => {
         if (cardType === undefined || currency === undefined || cardValue === undefined) { 
@@ -62,6 +64,7 @@ const useExchangeCurrencyViewModel = (): ExchangeCurrencyViewModel => {
 
     const onClose = () => {
         navigation.goBack();
+        setIsMainHeaderVisible(true);
         setIsModalVisible(false);
     }
 

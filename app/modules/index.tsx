@@ -4,3 +4,4 @@ export { RegisterScreen } from "./Register";
 export { ForgetPasswordScreen } from "./ForgetPassword";
 export { HomeScreen } from "./Home";
 export { DefaultExchangeScreen } from './ExchangeCurrency'
+export { ProfileScreen } from './Profile'

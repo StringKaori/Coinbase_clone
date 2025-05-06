@@ -1,5 +1,5 @@
 import { SafeAreaView } from "react-native-safe-area-context";
-import { Text, StyleSheet, View, TextInput, ScrollView } from "react-native";
+import { Text, StyleSheet, View, ScrollView } from "react-native";
 import { RouteProp } from "@react-navigation/native";
 import { RootStackParamList } from "global/types/RootStackParamList";
 import { useThemeStore } from "@themes/useThemeStore";
@@ -42,7 +42,7 @@ const DefaultExchangeScreen = ({ route }: Props) => {
             elevation: 5,
           }}
         >
-          {RenderExchangeMethodSVG(item.name, { top: -40 })}
+          { RenderExchangeMethodSVG(item.name, { top: -40 }) }
         </View>
         <Text style={styles.currencySubtitle}>{item.subtitle}</Text>
       </LinearGradient>

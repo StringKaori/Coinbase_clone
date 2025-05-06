@@ -16,18 +16,18 @@ interface CustomHeaderProps {
 }
 
 const CustomHeader = (props: CustomHeaderProps) => {
-  const { setIsVisible } = useMainHeaderStore();
+  const { setIsMainHeaderVisible } = useMainHeaderStore();
   const navigation = props.navigation;
   const { theme } = useThemeStore();
   const styles = getStyles(theme.colors.appBarBackground, theme.colors.primary);
 
   const handleGoBackPress = () => {
-    setIsVisible(true);
+    setIsMainHeaderVisible(true);
     navigation.goBack();
   };
 
   useEffect(() => {
-    setIsVisible(false);
+    setIsMainHeaderVisible(false);
   }, []);
 
   return (
