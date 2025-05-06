@@ -2,8 +2,9 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { BottomTabParamList } from "./types/BottomTabParamList";
 import HomeSVG from '@assets/HomeIcon.svg';
 import { GradientSVG } from "@common/components";
-import { MainStack } from "@routes/Stack/MainStack/MainStack";
+import { HomeStack } from "@routes/Stack/HomeStack/HomeStack";
 import { useMainHeaderStore } from "global/useMainHeaderStore/useMainHeaderStore";
+import { CustomTabbarHeader } from "@common/components/CustomHeader/CustomTabbarHeader";
 
 const Tab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -21,14 +22,14 @@ const BottomTab = () => {
           borderTopColor: '#e2e2e2',
         },
         headerShown: isVisible,
-        // header: () => (
-        //   <CustomTabbarHeader />
-        // ),
+        header: () => (
+          <CustomTabbarHeader navigation={navigation}/>
+        ),
       })}
     >
       <Tab.Screen
-        name="HomeScreen"
-        component={MainStack}
+        name="HomeScreenTab"
+        component={HomeStack}
         options={{
           tabBarIcon: ({ focused }) =>
             focused ? (
@@ -41,7 +42,7 @@ const BottomTab = () => {
 
       <Tab.Screen
         name="SecondScreen"
-        component={MainStack}
+        component={HomeStack}
         options={{
           tabBarIcon: ({ focused }) =>
             focused ? (

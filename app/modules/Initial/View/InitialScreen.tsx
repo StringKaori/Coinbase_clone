@@ -20,13 +20,7 @@ const InitialScreen = () => {
   const styles = getStyles(theme.colors.background);
 
   const handlePress = async () => {
-    try {
-      await AsyncStorage.setItem("isFirstTime", "true");
-    } catch (e) {
-      console.error(e);
-    } finally {
-      navigation.reset({ index: 0, routes: [{ name: "LoginScreen" }] });
-    }
+    navigation.reset({ index: 0, routes: [{ name: "LoginScreen" }] });
   };
 
   return (

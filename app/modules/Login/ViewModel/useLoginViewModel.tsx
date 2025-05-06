@@ -4,6 +4,7 @@ import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { InitialStackParamList } from "@routes/Stack/InitialStack/types/InitialStackParamList";
 import { ValidateEmail } from "@common/helpers/ValidateEmail";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 type LoginScreenNavigationProp =
   NativeStackNavigationProp<InitialStackParamList>;
@@ -30,7 +31,7 @@ const useLoginViewModel = (): LoginViewModel => {
   };
 
   // MARK: - Handlers
-  const handleLoginPress = () => {
+  const handleLoginPress = async () => {
     if (!email || !password) {
       setEmptyFields(true);
       return;
@@ -42,6 +43,11 @@ const useLoginViewModel = (): LoginViewModel => {
       return;
     }
     setInvalidEmail(false);
+    try {
+      await AsyncStorage.setItem("isFirstTime", "false");
+    } catch (e) {
+      console.error(e);
+    }
     navigation.reset({ index: 0, routes: [{ name: "BottomTab" }] });
   };
 

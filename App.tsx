@@ -6,9 +6,12 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { useWindowDimensions } from 'react-native';
 import { useThemeStore } from './app/theme/useThemeStore';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { MainStack } from '@routes/Stack/MainStack/MainStack';
 
 export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);
+  const [isFirstTime, setIsFirstTime] = useState<boolean>();
   const { setWidth, setHeight } = useThemeStore();
   const { width, height } = useWindowDimensions();
 
@@ -18,6 +21,10 @@ export default function App() {
       try {
         setWidth(width);
         setHeight(height);
+
+        let isFirst = await AsyncStorage.getItem("isFirstTime");
+        setIsFirstTime(isFirst === "false" ? false : true)
+
         await new Promise(resolve => setTimeout(resolve, 2000));
       } catch (e) {
         console.warn(e);
@@ -43,8 +50,7 @@ export default function App() {
     <GestureHandlerRootView style={{ flex:1 }}>
       <SafeAreaProvider>
         <NavigationContainer onReady={onLayoutRootView}>
-          <InitialStack />
-           {/* <BottomTab /> */}
+          {isFirstTime ? <InitialStack /> : <MainStack />}
         </NavigationContainer>
       </SafeAreaProvider>
     </GestureHandlerRootView>
