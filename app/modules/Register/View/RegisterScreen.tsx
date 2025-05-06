@@ -19,7 +19,7 @@ const RegisterScreen = () => {
   const { theme, width } = useThemeStore();
   const styles = useStyles(theme.colors.background);
   const viewModel: RegisterViewModel = useRegisterViewModel();
-  // TODO: revisit this and use height and width right
+  // TODO: revisit this and use height and width
   return (
     <SafeAreaView style={[styles.container, { width: width }]}>
       <LoginSilhouetteSVG />

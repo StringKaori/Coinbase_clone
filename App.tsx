@@ -6,7 +6,6 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { useWindowDimensions } from 'react-native';
 import { useThemeStore } from './app/theme/useThemeStore';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import { BottomTab } from '@routes/Tab/BottomTab/BottomTab';
 
 export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);
