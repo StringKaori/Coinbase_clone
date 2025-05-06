@@ -1,11 +1,11 @@
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { CustomHeader } from "@common/components/CustomHeader/CustomHeader";
-import { HomeStackParamList } from "./types/HomeStackParamList";
+import { MainStackParamList } from "./types/MainStackParamList";
 import { DefaultExchangeScreen, HomeScreen } from "@modules/index";
 
-const Stack = createNativeStackNavigator<HomeStackParamList>();
+const Stack = createNativeStackNavigator<MainStackParamList>();
 
-const HomeStack = () => {
+const MainStack = () => {
 
   return (
     <Stack.Navigator
@@ -23,16 +23,14 @@ const HomeStack = () => {
       <Stack.Screen
         name="HomeScreen"
         component={HomeScreen}
-        // options={{ headerShown: true }}
       />
 
       <Stack.Screen
         name="DefaultExchangeScreen"
         component={DefaultExchangeScreen}
-        options={{ headerShown: true }}
       />
     </Stack.Navigator>
   );
 };
 
-export { HomeStack };
+export { MainStack };

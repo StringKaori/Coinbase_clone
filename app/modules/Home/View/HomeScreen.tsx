@@ -5,7 +5,7 @@ import { FlatList } from "react-native-gesture-handler";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useHomeViewModel } from "../ViewModel/useHomeViewModel";
 import { useNavigation } from "@react-navigation/native";
-import { HomeStackParamList } from "@routes/Stack/HomeStack/types/HomeStackParamList";
+import { MainStackParamList } from "@routes/Stack/MainStack/types/MainStackParamList";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RenderExchangeMethodSVG } from "@common/helpers/RenderExchangeMethodSVG/RenderExchangeMethodSVG";
 
@@ -14,7 +14,7 @@ const HomeScreen = () => {
   const styles = createStyles(theme.colors.background);
   const viewModel = useHomeViewModel();
   // MARK: - Navigation handlers
-  const navigation = useNavigation<NativeStackNavigationProp<HomeStackParamList>>();
+  const navigation = useNavigation<NativeStackNavigationProp<MainStackParamList>>();
 
   return (
     <SafeAreaView style={[styles.container, { height: height }]}>

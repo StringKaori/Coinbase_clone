@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { ExchangeCurrencyViewModel } from "./ExchangeCurrencyViewModel";
 import { useAccountTotalStore } from "global/useAccountTotal/useAccountTotal";
-import { HomeStackParamList } from "@routes/Stack/HomeStack/types/HomeStackParamList";
+import { MainStackParamList } from "@routes/Stack/MainStack/types/MainStackParamList";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { useNavigation } from "@react-navigation/native";
 
 const useExchangeCurrencyViewModel = (): ExchangeCurrencyViewModel => {
-    const navigation = useNavigation<NativeStackNavigationProp<HomeStackParamList>>();
+    const navigation = useNavigation<NativeStackNavigationProp<MainStackParamList>>();
 
     const [exchangeValue, setExchangeValue] = useState<string>();
     const [exchangeTotal, setExchangeTotal] = useState<number>(0);
@@ -44,16 +44,20 @@ const useExchangeCurrencyViewModel = (): ExchangeCurrencyViewModel => {
 
     const handleContinuePress = (type: string) => {
         if (type === "gift") {
-            handleGift()
+            handleGift();
             return;
         }
-        handleCrypto()
+        handleCrypto();
     }
 
     const handleTotal = (text: string, amount: number, rate: number) => {
-        setExchangeValue(text)
-        let mult = parseFloat(text) / amount
-        setExchangeTotal(Math.ceil(rate * mult))
+        setExchangeValue(text);
+        if (text==="") {
+            setExchangeTotal(0);
+            return;
+        }
+        let mult = parseFloat(text) / amount;
+        setExchangeTotal(Math.ceil(rate * mult));
     }
 
     const onClose = () => {
