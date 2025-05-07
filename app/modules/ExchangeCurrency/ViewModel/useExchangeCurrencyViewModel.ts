@@ -35,7 +35,7 @@ const useExchangeCurrencyViewModel = (): ExchangeCurrencyViewModel => {
         setRecentTransactions({ 
             type: convertedType,
             title: item.title,
-            convertedValue: total,
+            convertedValue: exchangeTotal,
             date: new Date(),
             status: "Successful",
             iconColorsGradient: item.backgroundGradient.colors

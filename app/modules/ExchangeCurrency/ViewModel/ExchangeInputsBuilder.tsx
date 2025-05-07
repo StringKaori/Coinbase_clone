@@ -66,8 +66,7 @@ const ExchangeInputsBuilder = (props: ExchangeInputsBuilderProps) => {
           placeholder="Select Gift Card Value"
           value={viewModel.cardValue}
           onChange={(selectedItem) => {
-            //TODO: - mudar essa coisa feia do krl 
-            viewModel.handleTotal("1", item.amount, item.rate)
+            viewModel.handleTotal(selectedItem.value, item.amount, item.rate)
             viewModel.setCardValue(selectedItem.value)
           }}
         />

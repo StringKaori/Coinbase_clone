@@ -26,7 +26,7 @@ const useProfileStore = create<ProfileState>((set) => ({
         {
             type: "gift",
             title: "App Store & iTunes Gift Card",
-            convertedValue: 300.00,
+            convertedValue: 0,
             date: new Date(),
             status: "Failed",
             iconColorsGradient: ["#00E0FF", "#0047FF"]
@@ -34,7 +34,7 @@ const useProfileStore = create<ProfileState>((set) => ({
         {
             type: "crypto",
             title: "Bitcoin Currency",
-            convertedValue: 440.00,
+            convertedValue: 0,
             date: new Date(),
             status: "In Progress",
             iconColorsGradient: ["#FF8000", "#E34141"]
