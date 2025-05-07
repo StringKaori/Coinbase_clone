@@ -5,7 +5,7 @@ import { MainStackParamList } from "@routes/Stack/MainStack/types/MainStackParam
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { useNavigation } from "@react-navigation/native";
 import { useMainHeaderStore } from "global/useMainHeaderStore/useMainHeaderStore";
-import { useProfileStore, TransactionType } from "global";
+import { useTransactionsStore, TransactionType } from "global";
 import { ExchangeMethodType } from "@modules/Home/ViewModel/types/ExchangeMethodType";
 
 const useExchangeCurrencyViewModel = (): ExchangeCurrencyViewModel => {
@@ -22,8 +22,8 @@ const useExchangeCurrencyViewModel = (): ExchangeCurrencyViewModel => {
     const [errorMessage, setErrorMessage] = useState<string>("");
 
     const { accountTotal, setAccountTotal } = useAccountTotalStore();
-    const { setIsMainHeaderVisible } = useMainHeaderStore()
-    const { setRecentTransactions } = useProfileStore()
+    const { setIsMainHeaderVisible } = useMainHeaderStore();
+    const { setRecentTransactions, incrementSuccessfulTransactionsCount } = useTransactionsStore();
 
     // yeah i know the best was to add a state for the item, but i don't have time to refactor rn
     const handleCompletion = (item: ExchangeMethodType) => {
@@ -40,6 +40,7 @@ const useExchangeCurrencyViewModel = (): ExchangeCurrencyViewModel => {
             status: "Successful",
             iconColorsGradient: item.backgroundGradient.colors
         })
+        incrementSuccessfulTransactionsCount()
     }
 
     const handleGift = (item: ExchangeMethodType) => {

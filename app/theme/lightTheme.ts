@@ -12,7 +12,7 @@ export const lightTheme: ThemeType = {
     },
     primary: '#6200ee',
     secondary: '#FFFBF7',
-    currencyTitle: '#626262',
+    defaultTitle: '#626262',
     recentTransactionSecondary: '#979797',
     success: '#0FE133'
   },

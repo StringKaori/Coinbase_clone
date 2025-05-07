@@ -1,5 +1,4 @@
 import { StringSetter } from "@common/types/SetStateType";
-import { TransactionStatus } from "global";
 
 interface ProfileViewModel {
     totalBalance: string, 

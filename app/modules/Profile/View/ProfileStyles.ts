@@ -9,7 +9,7 @@ const createStyles = (theme: ThemeType, width: number) =>
       width: width,
     },
     profileTitle: {
-      color: theme.colors.currencyTitle,
+      color: theme.colors.defaultTitle,
       fontSize: 16,
       paddingLeft: 28,
       paddingBottom: 21,
@@ -33,7 +33,7 @@ const createStyles = (theme: ThemeType, width: number) =>
       marginTop: 20,
     },
     recentTransactionsTitle: {
-      color: theme.colors.currencyTitle,
+      color: theme.colors.defaultTitle,
       fontSize: 14,
       padding: 28,
     },

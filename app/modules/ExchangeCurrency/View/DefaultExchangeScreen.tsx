@@ -20,7 +20,7 @@ const DefaultExchangeScreen = ({ route }: Props) => {
   const styles = createStyles(
     theme.colors.background,
     width,
-    theme.colors.currencyTitle
+    theme.colors.defaultTitle
   );
 
   const viewModel = useExchangeCurrencyViewModel();

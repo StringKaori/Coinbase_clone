@@ -13,7 +13,7 @@ type ThemeColors = {
     gradient: GradientObject,
     primary: string,
     secondary: string,
-    currencyTitle: string,
+    defaultTitle: string,
     recentTransactionSecondary: string,
     success: string
 }

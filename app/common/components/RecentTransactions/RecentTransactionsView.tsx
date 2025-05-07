@@ -1,12 +1,12 @@
 import { LinearGradient } from "expo-linear-gradient";
-import { TransactionStatus, useProfileStore } from "global";
+import { TransactionStatus, useTransactionsStore } from "global";
 import { FlatList, TouchableOpacity, View, Text } from "react-native";
 import { formatBalance } from "@common/helpers/formatBalance";
 import CryptoSVG from "@assets/Crypto.svg";
 import GiftCardSVG from "@assets/GiftCard.svg";
 
 const RecentTransactionsView = () => {
-  const { recentTransactions } = useProfileStore();
+  const { recentTransactions } = useTransactionsStore();
   const { theme, width } = useThemeStore();
   const styles = createStyles(theme);
 
@@ -79,7 +79,7 @@ import { useThemeStore } from "@themes/useThemeStore";
 const createStyles = (theme: ThemeType) =>
   StyleSheet.create({
     recentTransactionsTitle: {
-      color: theme.colors.currencyTitle,
+      color: theme.colors.defaultTitle,
       fontSize: 14,
       padding: 28,
     },
