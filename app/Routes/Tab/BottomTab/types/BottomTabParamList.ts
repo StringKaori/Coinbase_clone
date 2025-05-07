@@ -1,4 +1,5 @@
 export type BottomTabParamList = {
     HomeScreenTab: undefined;
-    SecondScreen: undefined;
+    EditProfileScreenTab: undefined;
+    TransactionHistoryTab: undefined;
 }

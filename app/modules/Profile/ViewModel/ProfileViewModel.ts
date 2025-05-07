@@ -5,9 +5,7 @@ interface ProfileViewModel {
     totalBalance: string, 
     setTotalBalance: StringSetter,
 
-    getStatusColor: (status: TransactionStatus) => string,
-    formatBalance: (value: number) => string,
-    formattedDate: (date: Date) => string
+    handleEditProfilePress: () => void
 }
 
 export { ProfileViewModel };

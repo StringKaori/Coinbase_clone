@@ -1,35 +1,25 @@
 import { formatBalance } from "@common/helpers/formatBalance";
-import { TransactionStatus, useAccountTotalStore } from "global";
-import { useEffect, useState } from "react";
+import { useAccountTotalStore } from "global";
+import { useState } from "react";
 import { ProfileViewModel } from "./ProfileViewModel";
+import { MainStackParamList } from "@routes/Stack/MainStack/types/MainStackParamList";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { useNavigation } from "@react-navigation/native";
 
 const useProfileViewModel = (): ProfileViewModel => {
     const { accountTotal } = useAccountTotalStore();
     const [totalBalance, setTotalBalance] = useState<string>(formatBalance(accountTotal));
+    
+    const navigation = useNavigation<NativeStackNavigationProp<MainStackParamList>>();
 
-    // useEffect(() => {
-    //     setBalance(formatBalance(accountTotal))
-    // }, [])
-
-    const formattedDate = (date: Date): string => {
-        return date.toLocaleDateString("en-US", {
-        month: "short",
-        day: "2-digit",
-        year: "numeric",
-        });
-    };
-
-    const getStatusColor = (status: TransactionStatus): string => {
-        return status === "Successful" ? "#0FE133" :
-            status === "Failed" ? "#EB3232" : "#979797"
+    const handleEditProfilePress = () => {
+        navigation.navigate('EditProfileScreen')
     }
 
     return {
         totalBalance, 
         setTotalBalance,
-        getStatusColor,
-        formatBalance,
-        formattedDate
+        handleEditProfilePress
     }
 }
 
