@@ -1,6 +1,6 @@
 import { SafeAreaView } from "react-native-safe-area-context";
 import { RecentTransactionsView } from "@common/components";
-import { useAccountTotalStore, useTransactionsStore } from "global";
+import { useAccountTotalStore, useMainHeaderStore, useTransactionsStore } from "global";
 import { CircleBuilder } from "./helpers/CircleBuilder";
 import { View, Text, StyleSheet } from "react-native";
 import { useThemeStore } from "@themes/useThemeStore";
@@ -11,8 +11,23 @@ import InProgressSVG from "@assets/InProgress.svg";
 import FailedSVG from "@assets/Failed.svg";
 import { formatBalance } from "@common/helpers/formatBalance";
 import { LinearGradient } from "expo-linear-gradient";
+import { useFocusEffect } from "@react-navigation/native";
+import { useCallback } from "react";
 
 const TransactionHistory = () => {
+
+  const {setIsMainHeaderVisible} = useMainHeaderStore()
+
+  useFocusEffect(
+    useCallback(() => {
+      setIsMainHeaderVisible(true);
+      return () => {
+        // Optional: hide header when navigating away
+        setIsMainHeaderVisible(false);
+      };
+    }, [])
+  );
+
   // the correct would be havin two states one for the total earned
   // and one for the accountTotal, but since all of this is static
   // and the user can't deduce from his balance...

@@ -23,7 +23,7 @@ const useExchangeCurrencyViewModel = (): ExchangeCurrencyViewModel => {
 
     const { accountTotal, setAccountTotal } = useAccountTotalStore();
     const { setIsMainHeaderVisible } = useMainHeaderStore();
-    const { setRecentTransactions, incrementSuccessfulTransactionsCount } = useTransactionsStore();
+    const { setRecentTransactions, incrementTotalTransactionsNumber, incrementSuccessfulTransactionsCount } = useTransactionsStore();
 
     // yeah i know the best was to add a state for the item, but i don't have time to refactor rn
     const handleCompletion = (item: ExchangeMethodType) => {
@@ -40,6 +40,7 @@ const useExchangeCurrencyViewModel = (): ExchangeCurrencyViewModel => {
             status: "Successful",
             iconColorsGradient: item.backgroundGradient.colors
         })
+        incrementTotalTransactionsNumber()
         incrementSuccessfulTransactionsCount()
     }
 

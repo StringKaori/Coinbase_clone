@@ -41,7 +41,7 @@ const getStyles = (backgroundColor: string, height: number) =>
       backgroundColor: backgroundColor,
     },
     headerContainer: {
-      height: height * 0.07,
+      height: height * 0.08,
       flexDirection: "row",
       alignItems: "center",
       justifyContent: "center",

@@ -48,7 +48,7 @@ const createStyles = (background: string) =>
   StyleSheet.create({
     container: {
       backgroundColor: background,
-      paddingHorizontal: 28,
+      paddingLeft: 18,
       flex: 1,
     },
   });

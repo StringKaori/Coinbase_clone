@@ -7,7 +7,7 @@ import { CustomTabbarHeader } from "@common/components/CustomHeader/CustomTabbar
 import { EditProfileScreen } from "@modules/Profile";
 import HomeSVG from '@assets/HomeIcon.svg';
 import SettingsSVG from '@assets/Settings.svg';
-import HistorySVG from '@assets/HistoryIcon.svg';
+import HistorySVG from '@assets/HistoryIcon.svg'
 import { TransactionHistory } from "@modules/TransactionHistory";
 
 const Tab = createBottomTabNavigator<BottomTabParamList>();
