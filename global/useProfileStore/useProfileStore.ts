@@ -46,4 +46,4 @@ const useProfileStore = create<ProfileState>((set) => ({
         }))
 }));
 
-export { useProfileStore, TransactionType };
+export { useProfileStore, TransactionType, TransactionStatus };
