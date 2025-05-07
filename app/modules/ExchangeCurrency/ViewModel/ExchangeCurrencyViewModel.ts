@@ -1,4 +1,5 @@
 import { BooleanSetter, NumberOrUndefinedSetter, NumberSetter, StringOrUndefinedSetter, StringSetter } from "@common/types/SetStateType";
+import { ExchangeMethodType } from "@modules/Home/ViewModel/types/ExchangeMethodType";
 
 interface ExchangeCurrencyViewModel {
     exchangeValue: string | undefined,
@@ -18,7 +19,7 @@ interface ExchangeCurrencyViewModel {
     errorMessage: string, 
     setErrorMessage: StringSetter,
 
-    handleContinuePress: (type: string) => void,
+    handleContinuePress: (item: ExchangeMethodType) => void,
     handleTotal: (text: string, amount: number, rate: number) => void,
     onClose: () => void
 }

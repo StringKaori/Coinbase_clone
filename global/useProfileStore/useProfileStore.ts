@@ -23,35 +23,27 @@ const useProfileStore = create<ProfileState>((set) => ({
     username: "Bosun Jonesss",
     setUsername: (username: string) => {set({username: username})},
     recentTransactions: [
-        { 
-            type: "gift",
-            title: "Amazon giftcard",
-            convertedValue: 150.00,
-            date: new Date(),
-            status: "Successful",
-            iconColorsGradient: ["#ff0000", "#00ff00"]
-        },
         {
             type: "gift",
-            title: "Steam giftcard",
-            convertedValue: 75.50,
+            title: "App Store & iTunes Gift Card",
+            convertedValue: 300.00,
             date: new Date(),
-            status: "In Progress",
-            iconColorsGradient: ["#f39c12", "#d35400"]
+            status: "Failed",
+            iconColorsGradient: ["#00E0FF", "#0047FF"]
         },
         {
             type: "crypto",
-            title: "Bitcoin",
-            convertedValue: 320.25,
+            title: "Bitcoin Currency",
+            convertedValue: 440.00,
             date: new Date(),
-            status: "Failed",
-            iconColorsGradient: ["#8e44ad", "#3498db"]
+            status: "In Progress",
+            iconColorsGradient: ["#FF8000", "#E34141"]
         },
     ],
     setRecentTransactions: (recentTransaction: RecentTransactions) => 
         set((state) => ({
-            recentTransactions: [...state.recentTransactions, recentTransaction]
+            recentTransactions: [recentTransaction, ...state.recentTransactions]
         }))
 }));
 
-export { useProfileStore };
+export { useProfileStore, TransactionType };

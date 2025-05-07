@@ -70,7 +70,7 @@ const DefaultExchangeScreen = ({ route }: Props) => {
 
           <SimpleButton
             content={"continue"}
-            handler={() => viewModel.handleContinuePress(item.type)}
+            handler={() => viewModel.handleContinuePress(item)}
           />
         </View>
       </ScrollView>

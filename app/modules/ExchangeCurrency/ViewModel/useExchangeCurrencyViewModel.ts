@@ -5,6 +5,8 @@ import { MainStackParamList } from "@routes/Stack/MainStack/types/MainStackParam
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { useNavigation } from "@react-navigation/native";
 import { useMainHeaderStore } from "global/useMainHeaderStore/useMainHeaderStore";
+import { useProfileStore, TransactionType } from "global";
+import { ExchangeMethodType } from "@modules/Home/ViewModel/types/ExchangeMethodType";
 
 const useExchangeCurrencyViewModel = (): ExchangeCurrencyViewModel => {
     const navigation = useNavigation<NativeStackNavigationProp<MainStackParamList>>();
@@ -21,35 +23,47 @@ const useExchangeCurrencyViewModel = (): ExchangeCurrencyViewModel => {
 
     const { accountTotal, setAccountTotal } = useAccountTotalStore();
     const { setIsMainHeaderVisible } = useMainHeaderStore()
+    const { setRecentTransactions } = useProfileStore()
 
-    const handleGift = () => {
+    // yeah i know the best was to add a state for the item, but i don't have time to refactor rn
+    const handleCompletion = (item: ExchangeMethodType) => {
+        setErrorMessage("");
+        const total = accountTotal;
+        setAccountTotal(total + exchangeTotal);
+        setIsModalVisible(true);
+        const convertedType = item.type as TransactionType
+        setRecentTransactions({ 
+            type: convertedType,
+            title: item.title,
+            convertedValue: total,
+            date: new Date(),
+            status: "Successful",
+            iconColorsGradient: item.backgroundGradient.colors
+        })
+    }
+
+    const handleGift = (item: ExchangeMethodType) => {
         if (cardType === undefined || currency === undefined || cardValue === undefined) { 
             setErrorMessage("Fields must be filled");
             return; 
         }
-        setErrorMessage("");
-        const total = accountTotal;
-        setAccountTotal(total + exchangeTotal);
-        setIsModalVisible(true);
+        handleCompletion(item)
     }
 
-    const handleCrypto = () => {
+    const handleCrypto = (item: ExchangeMethodType) => {
         if (exchangeValue === undefined) { 
             setErrorMessage("Field must be filled");
             return; 
         }
-        setErrorMessage("");
-        const total = accountTotal;
-        setAccountTotal(total + exchangeTotal);
-        setIsModalVisible(true);
+        handleCompletion(item)
     }
 
-    const handleContinuePress = (type: string) => {
-        if (type === "gift") {
-            handleGift();
+    const handleContinuePress = (item: ExchangeMethodType) => {
+        if (item.type === "gift") {
+            handleGift(item);
             return;
         }
-        handleCrypto();
+        handleCrypto(item);
     }
 
     const handleTotal = (text: string, amount: number, rate: number) => {
