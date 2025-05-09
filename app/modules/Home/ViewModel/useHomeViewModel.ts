@@ -5,7 +5,7 @@ import { useFocusEffect } from "@react-navigation/native";
 import { useCallback } from "react";
 
 const useHomeViewModel = (): HomeViewModel => {
-    const { username } = useProfileStore()
+    const { firstName } = useProfileStore()
     const {setIsMainHeaderVisible} = useMainHeaderStore()
     // TODO: - mergear os dois header em 1 pra n ter q ficar escondendo dessa forma ruim
     useFocusEffect(
@@ -15,7 +15,7 @@ const useHomeViewModel = (): HomeViewModel => {
     );
     return {
         exchangeMethods: ExchangeMethods,
-        username
+        firstName
     };
 }
 

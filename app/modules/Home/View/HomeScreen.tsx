@@ -18,7 +18,7 @@ const HomeScreen = () => {
   return (
     <View style={[styles.container, { height: height }]}>
       <GradientText
-        text={`Hi, ${viewModel.username}`}
+        text={`Hi, ${viewModel.firstName}`}
         style={[theme.text.title, { fontWeight: "regular", textAlign: "left" }]}
       />
       <Text style={{ fontSize: 18 }}>Welcome Back!</Text>

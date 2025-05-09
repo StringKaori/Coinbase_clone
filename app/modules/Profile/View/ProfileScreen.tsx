@@ -14,7 +14,7 @@ import { createStyles } from "./ProfileStyles";
 
 const ProfileScreen = () => {
   const { theme, width } = useThemeStore();
-  const { username } = useProfileStore();
+  const { firstName } = useProfileStore();
   const viewModel = useProfileViewModel();
 
   const styles = createStyles(theme, width);
@@ -26,7 +26,7 @@ const ProfileScreen = () => {
         style={styles.gradientContainer}
       >
         <ProfilePicSVG />
-        <Text style={theme.text.profileName}>{username}</Text>
+        <Text style={theme.text.profileName}>{firstName}</Text>
 
         <View
           style={{

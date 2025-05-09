@@ -4,7 +4,7 @@ import { useThemeStore } from "@themes/useThemeStore";
 
 interface SimpleButtonProps {
     content: string;
-    handler: () => void
+    handler: () => void;
 }
 
 const SimpleButton = (props: SimpleButtonProps) => {

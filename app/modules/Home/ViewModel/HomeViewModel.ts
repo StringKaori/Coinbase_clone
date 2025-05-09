@@ -2,7 +2,7 @@ import { ExchangeMethodType } from "./types/ExchangeMethodType";
 
 interface HomeViewModel {
     exchangeMethods: ExchangeMethodType[],
-    username: string
+    firstName: string
 }
 
 export { HomeViewModel };
