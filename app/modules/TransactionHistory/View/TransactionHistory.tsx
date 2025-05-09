@@ -1,4 +1,3 @@
-import { SafeAreaView } from "react-native-safe-area-context";
 import { RecentTransactionsView } from "@common/components";
 import { useAccountTotalStore, useMainHeaderStore, useTransactionsStore } from "global";
 import { CircleBuilder } from "./helpers/CircleBuilder";
@@ -18,13 +17,10 @@ const TransactionHistory = () => {
 
   const {setIsMainHeaderVisible} = useMainHeaderStore()
 
+  // TODO: - mergear os dois header em 1 pra n ter q ficar escondendo dessa forma ruim
   useFocusEffect(
     useCallback(() => {
-      setIsMainHeaderVisible(true);
-      return () => {
-        // Optional: hide header when navigating away
-        setIsMainHeaderVisible(false);
-      };
+    setIsMainHeaderVisible(true);
     }, [])
   );
 
@@ -43,7 +39,7 @@ const TransactionHistory = () => {
   const styles = createStyles(theme, width);
 
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <Text style={styles.title}>Transaction History</Text>
       <View style={{ alignItems: "center" }}>
         <CircleBuilder
@@ -98,7 +94,7 @@ const TransactionHistory = () => {
         </View>
       </View>
       <RecentTransactionsView />
-    </SafeAreaView>
+    </View>
   );
 };
 
@@ -129,6 +125,7 @@ const createStyles = (theme: ThemeType, width: number) =>
       borderWidth: 2,
       borderStyle: "dashed",
       borderColor: "purple",
+      marginBottom: 5
     },
     balance: {
       color: theme.colors.recentTransactionSecondary,

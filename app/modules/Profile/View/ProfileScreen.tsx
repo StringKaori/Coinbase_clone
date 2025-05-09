@@ -1,4 +1,3 @@
-import { SafeAreaView } from "react-native-safe-area-context";
 import {
   Text,
   View,
@@ -20,7 +19,7 @@ const ProfileScreen = () => {
 
   const styles = createStyles(theme, width);
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <Text style={styles.profileTitle}>Profile</Text>
       <LinearGradient
         colors={["#e879a9", "#834ebd"]}
@@ -50,7 +49,7 @@ const ProfileScreen = () => {
       </LinearGradient>
 
       <RecentTransactionsView/>
-    </SafeAreaView>
+    </View>
   );
 };
 

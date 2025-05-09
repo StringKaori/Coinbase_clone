@@ -1,4 +1,3 @@
-import { SafeAreaView } from "react-native-safe-area-context";
 import { Text, StyleSheet, View, ScrollView } from "react-native";
 import { RouteProp } from "@react-navigation/native";
 import { RootStackParamList } from "global/types/RootStackParamList";
@@ -26,7 +25,7 @@ const DefaultExchangeScreen = ({ route }: Props) => {
   const viewModel = useExchangeCurrencyViewModel();
 
   return (
-    <SafeAreaView style={styles.container}>
+    <View style={styles.container}>
       <Text style={styles.currencyTitle}>{item.title}</Text>
 
       <LinearGradient
@@ -82,7 +81,7 @@ const DefaultExchangeScreen = ({ route }: Props) => {
           "Exchange was successfull, your new balance is available on your profile."
         }
       />
-    </SafeAreaView>
+    </View>
   );
 };
 

@@ -48,7 +48,7 @@ const useLoginViewModel = (): LoginViewModel => {
     } catch (e) {
       console.error(e);
     }
-    navigation.reset({ index: 0, routes: [{ name: "BottomTab" }] });
+    navigation.reset({ index: 0, routes: [{ name: "MainStack" }] });
   };
 
   return {

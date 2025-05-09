@@ -25,9 +25,12 @@ const RecentTransactionsView = () => {
 
   return (
     <View style={{ flex:1 }}>
-      <Text style={styles.recentTransactionsTitle}>Recent Transactions</Text>
+      
       <FlatList
         data={recentTransactions}
+        ListHeaderComponent={
+          <Text style={styles.recentTransactionsTitle}>Recent Transactions</Text>
+        }
         showsVerticalScrollIndicator={false}
         contentContainerStyle={{ paddingHorizontal: 28 }}
         style={{ flex: 1 }}
@@ -81,7 +84,7 @@ const createStyles = (theme: ThemeType) =>
     recentTransactionsTitle: {
       color: theme.colors.defaultTitle,
       fontSize: 14,
-      padding: 28,
+      paddingVertical: 10,
     },
     iconWithGradientBackground: {
       width: 46,

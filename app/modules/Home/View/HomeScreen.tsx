@@ -1,8 +1,7 @@
 import { GradientText } from "@common/components";
 import { useThemeStore } from "@themes/useThemeStore";
-import { Text, StyleSheet, TouchableOpacity } from "react-native";
+import { Text, StyleSheet, TouchableOpacity, View } from "react-native";
 import { FlatList } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
 import { useHomeViewModel } from "../ViewModel/useHomeViewModel";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
@@ -17,7 +16,7 @@ const HomeScreen = () => {
   const navigation = useNavigation<NativeStackNavigationProp<HomeStackParamList>>();
 
   return (
-    <SafeAreaView style={[styles.container, { height: height }]}>
+    <View style={[styles.container, { height: height }]}>
       <GradientText
         text={`Hi, ${viewModel.username}`}
         style={[theme.text.title, { fontWeight: "regular", textAlign: "left" }]}
@@ -40,7 +39,7 @@ const HomeScreen = () => {
           </TouchableOpacity>
         )}
       />
-    </SafeAreaView>
+    </View>
   );
 };
 

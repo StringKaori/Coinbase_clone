@@ -1,7 +1,7 @@
 import { StyleSheet } from "react-native";
 
 // export const InputWithIconStyles  = (theme: ThemeType) => StyleSheet.create({
-export const InputWithIconStyles  = StyleSheet.create ({
+export const InputWithIconStyles = (iconSize: number) => StyleSheet.create ({
   container: {
     flexDirection: "row",
     alignItems: "center",
@@ -15,7 +15,11 @@ export const InputWithIconStyles  = StyleSheet.create ({
     padding: 10,
   },
   button: {
-    right: -5,
+    position: "absolute",
+    right: 5,
     paddingVertical: 10,
+    height: 20,
+    width: 20,
+    backgroundColor: 'red'
   },
 });

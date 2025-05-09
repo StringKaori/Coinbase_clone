@@ -3,9 +3,10 @@ import {
   KeyboardAvoidingView,
   TextInput,
   TouchableOpacity,
+  StyleSheet
 } from "react-native";
 import { SvgProps } from "react-native-svg";
-import { InputWithIconStyles } from "./InputWithIconStyles";
+// import { InputWithIconStyles } from "./InputWithIconStyles";
 import { useThemeStore } from "@themes/useThemeStore";
 
 interface InputWithIconProps {
@@ -23,7 +24,7 @@ const InputWithIcon = (props: InputWithIconProps) => {
   // the point is to imitate flutter ThemeData, 
   // i know this isn't the best way to do it in react
   const { theme } = useThemeStore()
-  const styles = InputWithIconStyles;
+  const styles = InputWithIconStyles(18);
 
   const IconSVG = props.IconSVG;
   const AlternativeIconSVG = props.AlternativeIconSVG;
@@ -39,9 +40,9 @@ const InputWithIcon = (props: InputWithIconProps) => {
         onPress={() => setIsSecureText(!props.isSecureText)}
       >
         {props.isSecureText ? (
-          <IconSVG style={styles.icon} />
+          <IconSVG width={18} height={18} style={{ padding: 10 }} />
         ) : (
-          <AlternativeIconSVG style={styles.icon} />
+          <AlternativeIconSVG width={18} height={18} style={{ padding: 10 }} />
         )}
       </TouchableOpacity>
     );
@@ -57,11 +58,33 @@ const InputWithIcon = (props: InputWithIconProps) => {
         style={theme.textInputWithIcon}
       />
 
-      {!props.isPassword && <IconSVG style={styles.icon} />}
+      {!props.isPassword && <IconSVG width={18} height={18} style={styles.icon} />}
 
       {props.isPassword && handlePasswordButton()}
     </KeyboardAvoidingView>
   );
 };
-
+const InputWithIconStyles = (iconSize: number) => StyleSheet.create ({
+  container: {
+    flexDirection: "row",
+    alignItems: "center",
+    padding: 5,
+    position: "relative",
+    marginBottom: 18,
+  },
+  icon: {
+    position: "absolute",
+    right: 20,
+    padding: 10,
+  },
+  button: {
+    position: "absolute",
+    right: 20,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingVertical: 10,
+    height: iconSize + 5,
+    width: iconSize + 5,
+  },
+});
 export { InputWithIcon };

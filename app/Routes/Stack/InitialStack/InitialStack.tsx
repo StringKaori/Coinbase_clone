@@ -2,7 +2,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { InitialStackParamList } from "./types/InitialStackParamList";
 import { CustomHeader } from "@common/components/CustomHeader/CustomHeader";
 import { InitialScreen, LoginScreen, RegisterScreen, ForgetPasswordScreen } from "@modules/index";
-import { BottomTab } from "@routes/Tab/BottomTab/BottomTab";
+import { MainStack } from "../MainStack/MainStack";
 
 const Stack = createNativeStackNavigator<InitialStackParamList>();
 
@@ -44,8 +44,8 @@ const InitialStack = () => {
       />
 
       <Stack.Screen
-        name="BottomTab"
-        component={BottomTab}
+        name="MainStack"
+        component={MainStack}
       />
     </Stack.Navigator>
   );

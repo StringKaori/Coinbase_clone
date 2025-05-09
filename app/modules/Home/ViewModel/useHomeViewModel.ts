@@ -7,14 +7,10 @@ import { useCallback } from "react";
 const useHomeViewModel = (): HomeViewModel => {
     const { username } = useProfileStore()
     const {setIsMainHeaderVisible} = useMainHeaderStore()
-
+    // TODO: - mergear os dois header em 1 pra n ter q ficar escondendo dessa forma ruim
     useFocusEffect(
         useCallback(() => {
         setIsMainHeaderVisible(true);
-        return () => {
-            // Optional: hide header when navigating away
-            setIsMainHeaderVisible(false);
-        };
         }, [])
     );
     return {
