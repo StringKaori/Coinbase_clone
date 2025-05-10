@@ -3,6 +3,7 @@ import { CustomHeader } from "@common/components/CustomHeader/CustomHeader";
 import { BottomTab } from "@routes/Tab/BottomTab/BottomTab";
 import { MainStackParamList } from "./types/MainStackParamList";
 import { EditProfileScreen, ProfileScreen } from "@modules/index";
+import { DrawerComponent } from "@routes/Drawer/DrawerComponent";
 
 const Stack = createNativeStackNavigator<MainStackParamList>();
 
@@ -35,6 +36,12 @@ const MainStack = () => {
       <Stack.Screen
         name="EditProfileScreen"
         component={EditProfileScreen}
+        options={{ headerShown: true }}
+      />
+
+      <Stack.Screen
+        name="Drawer"
+        component={DrawerComponent}
         options={{ headerShown: true }}
       />
     </Stack.Navigator>
