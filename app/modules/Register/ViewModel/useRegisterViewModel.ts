@@ -51,6 +51,7 @@ const useRegisterViewModel = (): RegisterViewModel => {
 
         if(!ValidateEmail(email)) {
             setInvalidEmail(true)
+            return;
         }
         
         if(!passwordsMatch) { return; }

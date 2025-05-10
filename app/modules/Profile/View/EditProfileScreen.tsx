@@ -13,8 +13,7 @@ const EditProfileScreen = () => {
   const { theme, height } = useThemeStore();
   const styles = createStyles(theme);
   const viewModel = useEditProfileViewModel();
-  
-  // State to track scroll position
+
   const [scrollY, setScrollY] = useState(0);
 
   return (

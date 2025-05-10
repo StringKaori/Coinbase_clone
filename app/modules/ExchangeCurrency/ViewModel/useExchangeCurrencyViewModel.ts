@@ -1,15 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ExchangeCurrencyViewModel } from "./ExchangeCurrencyViewModel";
 import { useAccountTotalStore } from "global/useAccountTotal/useAccountTotal";
 import { MainStackParamList } from "@routes/Stack/MainStack/types/MainStackParamList";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { useNavigation } from "@react-navigation/native";
+import { useIsFocused, useNavigation } from "@react-navigation/native";
 import { useMainHeaderStore } from "global/useMainHeaderStore/useMainHeaderStore";
 import { useTransactionsStore, TransactionType } from "global";
 import { ExchangeMethodType } from "@modules/Home/ViewModel/types/ExchangeMethodType";
 
 const useExchangeCurrencyViewModel = (): ExchangeCurrencyViewModel => {
     const navigation = useNavigation<NativeStackNavigationProp<MainStackParamList>>();
+
+    const isFocused = useIsFocused();
+
+    useEffect(() => {
+      if (!isFocused) {
+        navigation.goBack();
+      }
+    }, [isFocused, navigation]);
 
     const [exchangeValue, setExchangeValue] = useState<string>();
     const [exchangeTotal, setExchangeTotal] = useState<number>(0);
@@ -53,10 +61,11 @@ const useExchangeCurrencyViewModel = (): ExchangeCurrencyViewModel => {
     }
 
     const handleCrypto = (item: ExchangeMethodType) => {
-        if (exchangeValue === undefined) { 
-            setErrorMessage("Field must be filled");
+        if (exchangeValue === undefined || exchangeValue === "0") {
+            setErrorMessage("Field must be filled and different than zero");
             return; 
         }
+        console.log(`exchange value: ${exchangeValue}`);
         handleCompletion(item)
     }
 
