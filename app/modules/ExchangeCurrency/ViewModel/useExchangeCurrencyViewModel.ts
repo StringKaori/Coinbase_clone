@@ -65,7 +65,6 @@ const useExchangeCurrencyViewModel = (): ExchangeCurrencyViewModel => {
             setErrorMessage("Field must be filled and different than zero");
             return; 
         }
-        console.log(`exchange value: ${exchangeValue}`);
         handleCompletion(item)
     }
 
