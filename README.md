@@ -1,3 +1,6 @@
+# Warning
+For some reason i don't know github renamed my `routes` folder to `Routes`, so it is possible that the project breaks if forked, to solve you'll have to rename every import that has `/routes` to `/Routes`
+
 # Coinbase Clone
 This project was created for the subject of Mobile Development at IFSP-BRA, the objective is to implement some concepts learned at the classes, all groups got random designs to implement, ours was the Coinbase with major changes to the original one.
 [link to the original design](https://www.uistore.design/items/coinbase-web-and-mobile-free-ui-kit/).
