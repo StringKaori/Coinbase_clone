@@ -3,6 +3,7 @@ import { Text } from "react-native";
 import { HomeScreen } from "@modules/Home";
 import { ProfileScreen } from "@modules/Profile";
 import { TransactionHistory } from "@modules/TransactionHistory";
+import { useThemeStore } from "@themes/useThemeStore";
 
 type DrawerParamList = {
   Home: undefined;
@@ -13,18 +14,19 @@ type DrawerParamList = {
 const Drawer = createDrawerNavigator<DrawerParamList>();
 
 const DrawerComponent = () => {
+  const { theme } = useThemeStore()
   return (
     <Drawer.Navigator
       initialRouteName="Home"
       screenOptions={{
         headerStyle: {
-          backgroundColor: "#f4511e",
+          backgroundColor: theme.colors.background,
         },
-        headerTintColor: "#fff",
+        headerTintColor: "#a04dae",
         headerTitleStyle: {
           fontWeight: "bold",
         },
-        drawerActiveTintColor: "#f4511e",
+        drawerActiveTintColor: "#a04dae",
         drawerLabelStyle: {
           fontSize: 16,
         },
