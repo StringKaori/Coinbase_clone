@@ -14,7 +14,6 @@ const useHomeViewModel = (): HomeViewModel => {
         const fetchOrientation = async () => {
             const orientation = await ScreenOrientation.getOrientationAsync();
             setCurrentOrientation(orientation);
-            console.log('Initial orientation:', ScreenOrientation.Orientation[orientation]);
         };
 
         fetchOrientation();
