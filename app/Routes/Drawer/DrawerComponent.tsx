@@ -31,8 +31,6 @@ const DrawerComponent = () => {
           fontSize: 16,
         },
       }}
-      // Optional: Use custom drawer content
-      // drawerContent={(props) => <CustomDrawerContent {...props} />}
     >
       <Drawer.Screen
         name="Home"
