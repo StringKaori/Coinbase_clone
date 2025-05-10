@@ -5,7 +5,7 @@ import { ScrollView, View, Text, StyleSheet } from "react-native";
 import ChangePictureSVG from "@assets/ChangePicture.svg";
 import InputWithPersistentPlaceholder from "./helpers/InputWithPersistentPlaceholder";
 import { useEditProfileViewModel } from "../ViewModel/useEditProfileViewModel";
-import { SimpleButton } from "@common/components";
+import { CustomModal, SimpleButton } from "@common/components";
 
 const EditProfileScreen = () => {
   const { theme } = useThemeStore();
@@ -80,6 +80,10 @@ const EditProfileScreen = () => {
           </View>
         </View>
       </View>
+      <CustomModal 
+        visible={viewModel.shouldShowModal} 
+        onClose={viewModel.handleModalClose} 
+        message={"Successfully updated your data!"} />
     </ScrollView>
   );
 };

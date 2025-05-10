@@ -19,8 +19,11 @@ interface EditProfileViewModel {
     setEmptyPasswordInfoFields: BooleanSetter,
     passwordsMatch: boolean,
     setPasswordsMatch: BooleanSetter,
+    shouldShowModal: boolean,
+    setShouldShowModal: BooleanSetter,
 
-    handleSaveAndContinuePress: () => void
+    handleSaveAndContinuePress: () => void,
+    handleModalClose: () => void
 }
 
 export { EditProfileViewModel }

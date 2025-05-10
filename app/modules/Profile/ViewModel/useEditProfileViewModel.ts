@@ -5,7 +5,7 @@ import { useFocusEffect } from "@react-navigation/native";
 
 const useEditProfileViewModel = (): EditProfileViewModel => {
     const { setIsMainHeaderVisible } = useMainHeaderStore();
-    const { firstName, lastName, phoneNumber } = useProfileStore();
+    const { firstName, setFirstName, lastName, setLastName, phoneNumber, setPhoneNumber } = useProfileStore();
 
     const [newName, setNewName] = useState<string>(firstName);
     const [newLastName, setNewLastName] = useState<string>(lastName);
@@ -17,12 +17,9 @@ const useEditProfileViewModel = (): EditProfileViewModel => {
     const [emptyAccountInfoFields, setEmptyAccountInfoFields] = useState<boolean>(false);
     const [emptyPasswordInfoFields, setEmptyPasswordInfoFields] = useState<boolean>(false);
     const [passwordsMatch, setPasswordsMatch] = useState<boolean>(true);
+    const [shouldShowModal, setShouldShowModal] = useState<boolean>(false);
         
-    // TODO: - mergear os dois header em 1 pra n ter q ficar escondendo dessa forma ruim
-    useFocusEffect(
-        useCallback(() => {
-        setIsMainHeaderVisible(true);
-
+    const resetStates = () => {
         setNewName(firstName);
         setNewLastName(lastName);
         setNewPhoneNumber(phoneNumber);
@@ -33,7 +30,14 @@ const useEditProfileViewModel = (): EditProfileViewModel => {
         setEmptyAccountInfoFields(false);
         setEmptyPasswordInfoFields(false);
         setPasswordsMatch(true);
-        }, [])
+    }
+    // TODO: - mergear os dois header em 1 pra n ter q ficar escondendo dessa forma ruim
+    useFocusEffect(
+        useCallback(() => {
+            setIsMainHeaderVisible(true);
+
+            resetStates()
+        }, [firstName, lastName, phoneNumber])
     );
 
     useEffect(() => {
@@ -66,6 +70,14 @@ const useEditProfileViewModel = (): EditProfileViewModel => {
 
         if(!passwordsMatch){ return; }
 
+        setFirstName(newName);
+        setLastName(newLastName);
+        setPhoneNumber(newPhoneNumber);
+        setShouldShowModal(true);
+    }
+
+    const handleModalClose = () => {
+        setShouldShowModal(false);
     }
 
     return {
@@ -87,8 +99,11 @@ const useEditProfileViewModel = (): EditProfileViewModel => {
         setEmptyPasswordInfoFields,
         passwordsMatch,
         setPasswordsMatch,
+        shouldShowModal, 
+        setShouldShowModal,
 
-        handleSaveAndContinuePress
+        handleSaveAndContinuePress,
+        handleModalClose
     }
 }
 
