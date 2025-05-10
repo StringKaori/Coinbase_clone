@@ -7,7 +7,6 @@ import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { RenderExchangeMethodSVG } from "@common/helpers/RenderExchangeMethodSVG/RenderExchangeMethodSVG";
 import { HomeStackParamList } from "@routes/Stack/HomeStack/types/HomeStackParamList";
-import { useEffect } from "react";
 import * as ScreenOrientation from "expo-screen-orientation";
 
 const HomeScreen = () => {

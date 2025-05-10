@@ -4,10 +4,8 @@ import { BottomTab } from "@routes/Tab/BottomTab/BottomTab";
 import { MainStackParamList } from "./types/MainStackParamList";
 import { EditProfileScreen, ProfileScreen } from "@modules/index";
 import { DrawerComponent } from "@routes/Drawer/DrawerComponent";
-import { createDrawerNavigator } from "@react-navigation/drawer";
 
 const Stack = createNativeStackNavigator<MainStackParamList>();
-const Drawer = createDrawerNavigator(); 
 
 const MainStack = () => {
 

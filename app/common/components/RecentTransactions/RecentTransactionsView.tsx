@@ -7,7 +7,7 @@ import GiftCardSVG from "@assets/GiftCard.svg";
 
 const RecentTransactionsView = () => {
   const { recentTransactions } = useTransactionsStore();
-  const { theme, width } = useThemeStore();
+  const { theme } = useThemeStore();
   const styles = createStyles(theme);
 
   const getStatusColor = (status: TransactionStatus): string => {

@@ -1,19 +1,27 @@
 import { ThemeType } from "@themes/types/ThemeType";
 import { useThemeStore } from "@themes/useThemeStore";
 import { LinearGradient } from "expo-linear-gradient";
-import { ScrollView, View, Text, StyleSheet } from "react-native";
+import { ScrollView, View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import ChangePictureSVG from "@assets/ChangePicture.svg";
 import InputWithPersistentPlaceholder from "./helpers/InputWithPersistentPlaceholder";
 import { useEditProfileViewModel } from "../ViewModel/useEditProfileViewModel";
 import { CustomModal, SimpleButton } from "@common/components";
+import StarSVG from '@assets/Successful.svg';
+import React, { useState } from 'react';
 
 const EditProfileScreen = () => {
-  const { theme } = useThemeStore();
+  const { theme, height } = useThemeStore();
   const styles = createStyles(theme);
   const viewModel = useEditProfileViewModel();
+  
+  // State to track scroll position
+  const [scrollY, setScrollY] = useState(0);
 
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView 
+      style={styles.container} 
+      onScroll={(event) => setScrollY(event.nativeEvent.contentOffset.y)}
+    >
       <View>
         <Text style={styles.title}>Settings</Text>
         <LinearGradient
@@ -71,13 +79,27 @@ const EditProfileScreen = () => {
 
           {!viewModel.passwordsMatch && <Text style={{ color: "red" }}>New passwords don't match</Text>}
           {viewModel.emptyPasswordInfoFields && <Text style={{ color: "red" }}>All password fields must be filled</Text>}
-          
+
           <View style={{ paddingBottom: 21, paddingTop: 10 }}>
             <SimpleButton
               content={"save & continue"}
               handler={viewModel.handleSaveAndContinuePress}
             />
           </View>
+
+          {/* Floating Button */}
+          <LinearGradient 
+            colors={["#e76ba0", "#7a3db7"]} 
+            style={[
+              styles.floatingButton, 
+              { top: scrollY + (height * 0.38) } 
+            ]}
+          >
+            <TouchableOpacity
+             onPress={viewModel.handleSaveAndContinuePress}>
+              <StarSVG />
+            </TouchableOpacity>
+          </LinearGradient>
         </View>
       </View>
       <CustomModal 
@@ -110,6 +132,15 @@ const createStyles = (theme: ThemeType) =>
     centralizedView: {
       justifyContent: "center",
       alignItems: "center",
+    },
+    floatingButton: {
+      position: "absolute",
+      right: 20,
+      borderRadius: 100,
+      justifyContent: 'center',
+      alignItems: 'center',
+      width: 60,
+      height: 60,
     },
   });
 
