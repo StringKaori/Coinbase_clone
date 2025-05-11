@@ -61,7 +61,7 @@ const useExchangeCurrencyViewModel = (): ExchangeCurrencyViewModel => {
     }
 
     const handleCrypto = (item: ExchangeMethodType) => {
-        if (exchangeValue === undefined || exchangeValue === "0") {
+        if (exchangeValue === undefined || exchangeValue === "" || exchangeValue === "0") {
             setErrorMessage("Field must be filled and different than zero");
             return; 
         }
