@@ -19,14 +19,24 @@ const HomeScreen = () => {
 
   return (
     <View style={[styles.container, { height: height }]}>
-      <GradientText
-        text={`Hi, ${viewModel.firstName}`}
-        style={[theme.text.title, { fontWeight: "regular", textAlign: "left" }]}
-      />
-      <Text style={{ fontSize: 18 }}>Welcome Back!</Text>
-      <Text style={{ fontSize: 16 }}>
-        Choose your prefered card to continue
-      </Text>
+      {(viewModel.currentOrientation ===
+        ScreenOrientation.Orientation.PORTRAIT_UP ||
+        viewModel.currentOrientation ===
+          ScreenOrientation.Orientation.PORTRAIT_DOWN) && 
+          <>
+            <GradientText
+              text={`Hi, ${viewModel.firstName}`}
+              style={[
+                theme.text.title,
+                { fontWeight: "regular", textAlign: "left" },
+              ]}
+            />
+            <Text style={{ fontSize: 18 }}>Welcome Back!</Text>
+            <Text style={{ fontSize: 16 }}>
+              Choose your prefered card to continue
+            </Text>
+          </>
+        }
 
       {viewModel.currentOrientation ===
         ScreenOrientation.Orientation.PORTRAIT_UP ||
@@ -47,7 +57,7 @@ const HomeScreen = () => {
             >
               {RenderExchangeMethodSVG(item.name)}
             </TouchableOpacity>
-          )} 
+          )}
         />
       ) : (
         <FlatList
