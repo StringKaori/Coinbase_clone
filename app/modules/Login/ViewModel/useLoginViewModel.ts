@@ -45,6 +45,7 @@ const useLoginViewModel = (): LoginViewModel => {
     setInvalidEmail(false);
     try {
       await AsyncStorage.setItem("isFirstTime", "false");
+      await AsyncStorage.setItem("isLoggedIn", "true");
     } catch (e) {
       console.error(e);
     }

@@ -6,11 +6,15 @@ import { MainStack } from "../MainStack/MainStack";
 
 const Stack = createNativeStackNavigator<InitialStackParamList>();
 
-const InitialStack = () => {
+interface InitialStackProps {
+  initialScreen?: keyof InitialStackParamList
+}
 
+const InitialStack = (props: InitialStackProps) => {
+  const initialScreen = props.initialScreen  || "LoginScreen" as keyof InitialStackParamList;
   return (
     <Stack.Navigator
-      initialRouteName={"InitialScreen"}
+      initialRouteName={initialScreen}
       screenOptions={({ navigation }) => ({
         headerShown: false,
         header: () => (

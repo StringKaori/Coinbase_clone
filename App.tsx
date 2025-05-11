@@ -12,6 +12,7 @@ import { MainStack } from '@routes/Stack/MainStack/MainStack';
 export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);
   const [isFirstTime, setIsFirstTime] = useState<boolean>();
+  const [isLoggedIn, setIsLoggedIn] = useState<boolean>();
   const { setWidth, setHeight } = useThemeStore();
   const { width, height } = useWindowDimensions();
 
@@ -22,8 +23,11 @@ export default function App() {
         setWidth(width);
         setHeight(height);
 
-        let isFirst = await AsyncStorage.getItem("isFirstTime");
+        const isFirst = await AsyncStorage.getItem("isFirstTime");
         setIsFirstTime(isFirst === "false" ? false : true)
+
+        const isLogged = await AsyncStorage.getItem("isLoggedIn");
+        setIsLoggedIn(isLogged === "true" ? true : false)
 
         await new Promise(resolve => setTimeout(resolve, 2000));
       } catch (e) {
@@ -50,7 +54,9 @@ export default function App() {
     <GestureHandlerRootView style={{ flex:1 }}>
       <SafeAreaProvider>
         <NavigationContainer onReady={onLayoutRootView}>
-          {isFirstTime ? <InitialStack /> : <MainStack />}
+          {isFirstTime ? <InitialStack initialScreen={'InitialScreen'} /> : 
+           isLoggedIn ? <MainStack /> :
+           <InitialStack  initialScreen={'LoginScreen'} /> }
         </NavigationContainer>
       </SafeAreaProvider>
     </GestureHandlerRootView>

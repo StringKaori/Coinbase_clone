@@ -11,8 +11,6 @@ const createStyles = (theme: ThemeType, width: number) =>
     profileTitle: {
       color: theme.colors.defaultTitle,
       fontSize: 16,
-      paddingLeft: 28,
-      paddingBottom: 21,
     },
     gradientContainer: {
       height: 269,
@@ -61,6 +59,13 @@ const createStyles = (theme: ThemeType, width: number) =>
     convertedValue: {
       color: theme.colors.success,
     },
+    rowView: {
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      paddingTop: 5,
+      paddingBottom: 10,
+      paddingHorizontal: 28
+    }
 });
 
 export { createStyles }

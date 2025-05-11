@@ -3,4 +3,5 @@ export type MainStackParamList = {
     ProfileScreen: undefined;
     EditProfileScreen: undefined;
     Drawer: undefined;
+    InitialStack: undefined;
 }
