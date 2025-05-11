@@ -32,7 +32,7 @@
         "rate": 360.00,
         "amount": 1,
         "backgroundGradient": {
-            "colors": ["#FD749B", "#281AC8"]
+            "colors": ["#FD749B", "#743ab8"]
         }
     },
     {
@@ -56,7 +56,7 @@
         "rate": 300.00,
         "amount":  1,
         "backgroundGradient": {
-            "colors": ["#FD749B", "#281AC8"]
+            "colors": ["#FD749B", "#743ab8"]
         }
     },
     {
@@ -80,7 +80,7 @@
         "rate": 300.00,
         "amount":  1,
         "backgroundGradient": {
-            "colors": ["#FD749B", "#281AC8"]
+            "colors": ["#FD749B", "#743ab8"]
         }
     }
 ]
